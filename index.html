@@ -111,7 +111,13 @@
 
   <div class="container hero__inner">
     <div class="hero__copy">
-      <p class="eyebrow" data-aos="fade-right" data-i18n="hero.eyebrow">Diagnostic Center</p>
+      <div class="hero__topline" data-aos="fade-right">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Diagnostic Center</p>
+        <span class="hours-status" data-hours-status>
+          <span class="hours-status__dot"></span>
+          <span class="hours-status__text" data-i18n="hours.openNow">Open now</span>
+        </span>
+      </div>
       <h1 class="hero__title" data-aos="fade-right" data-aos-delay="100" data-i18n-html="hero.titleHtml">Precision 3D Imaging,<br>Built for Modern Dentistry</h1>
       <p class="hero__desc" data-aos="fade-right" data-aos-delay="200" data-i18n="hero.desc">
         3D LAB is Yerevan's dedicated 3D dental X-ray and diagnostic imaging center.
@@ -311,7 +317,16 @@
     <div class="gallery__grid">
       <figure class="gallery__item" data-aos="zoom-in" data-aos-delay="100">
         <div class="gallery__frame">
-          <svg viewBox="0 0 48 48" fill="none" width="56" height="56"><rect x="6" y="6" width="36" height="36" rx="8" stroke="#3ecf4a" stroke-width="2"/><path d="M14 24h20M24 14v20" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="xray-art" viewBox="0 0 300 180" fill="none" aria-hidden="true">
+            <path d="M60 58 L150 26 L240 58 L240 128 L150 160 L60 128 Z" stroke="#2f6b3d" stroke-width="1.6" opacity=".55"/>
+            <path d="M60 58 L150 90 L240 58 M150 90 L150 160" stroke="#2f6b3d" stroke-width="1.6" opacity=".45"/>
+            <path d="M95 108 Q100 66 150 60 Q200 66 205 108 Q188 124 176 108 Q166 94 150 94 Q134 94 124 108 Q112 124 95 108 Z" stroke="#3ecf4a" stroke-width="2" fill="rgba(62,207,74,.07)"/>
+            <g stroke="#3ecf4a" stroke-width="1.5" opacity=".85" stroke-linecap="round">
+              <path d="M106 106 L103 92"/><path d="M116 98 L114 84"/><path d="M128 92 L127 78"/>
+              <path d="M142 89 L142 75"/><path d="M158 89 L158 75"/><path d="M172 92 L173 78"/>
+              <path d="M184 98 L186 84"/><path d="M194 106 L197 92"/>
+            </g>
+          </svg>
           <span class="gallery__tag" data-i18n="gallery.tag">Illustrative example</span>
         </div>
         <figcaption>
@@ -322,7 +337,27 @@
 
       <figure class="gallery__item" data-aos="zoom-in" data-aos-delay="200">
         <div class="gallery__frame">
-          <svg viewBox="0 0 48 48" fill="none" width="56" height="56"><path d="M8 30c4-14 28-14 32 0" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="20" r="4" stroke="#3ecf4a" stroke-width="2"/></svg>
+          <svg class="xray-art" viewBox="0 0 300 180" fill="none" aria-hidden="true">
+            <path d="M30 60 Q150 -10 270 60" stroke="#2f6b3d" stroke-width="2" opacity=".5"/>
+            <path d="M30 120 Q150 190 270 120" stroke="#2f6b3d" stroke-width="2" opacity=".5"/>
+            <g stroke="#3ecf4a" stroke-width="1.8" opacity=".92">
+              <rect x="23" y="60" width="14" height="20" rx="5"/><rect x="47" y="47" width="14" height="20" rx="5"/>
+              <rect x="71" y="38" width="14" height="20" rx="5"/><rect x="95" y="31" width="14" height="20" rx="5"/>
+              <rect x="119" y="26" width="14" height="20" rx="5"/><rect x="143" y="25" width="14" height="20" rx="5"/>
+              <rect x="167" y="26" width="14" height="20" rx="5"/><rect x="191" y="31" width="14" height="20" rx="5"/>
+              <rect x="215" y="38" width="14" height="20" rx="5"/><rect x="239" y="47" width="14" height="20" rx="5"/>
+              <rect x="263" y="60" width="14" height="20" rx="5"/>
+            </g>
+            <g stroke="#3ecf4a" stroke-width="1.8" opacity=".92">
+              <rect x="23" y="100" width="14" height="20" rx="5"/><rect x="47" y="113" width="14" height="20" rx="5"/>
+              <rect x="71" y="122" width="14" height="20" rx="5"/><rect x="95" y="129" width="14" height="20" rx="5"/>
+              <rect x="119" y="134" width="14" height="20" rx="5"/><rect x="143" y="135" width="14" height="20" rx="5"/>
+              <rect x="167" y="134" width="14" height="20" rx="5"/><rect x="191" y="129" width="14" height="20" rx="5"/>
+              <rect x="215" y="122" width="14" height="20" rx="5"/><rect x="239" y="113" width="14" height="20" rx="5"/>
+              <rect x="263" y="100" width="14" height="20" rx="5"/>
+            </g>
+            <rect class="xray-scanline" x="12" y="8" width="2" height="164" fill="#8dffa0" opacity=".55"/>
+          </svg>
           <span class="gallery__tag" data-i18n="gallery.tag">Illustrative example</span>
         </div>
         <figcaption>
@@ -333,7 +368,18 @@
 
       <figure class="gallery__item" data-aos="zoom-in" data-aos-delay="300">
         <div class="gallery__frame">
-          <svg viewBox="0 0 48 48" fill="none" width="56" height="56"><path d="M10 38 34 10M18 38h20" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="xray-art" viewBox="0 0 300 180" fill="none" aria-hidden="true">
+            <path d="M92 92 C92 54 122 32 158 34 C196 36 218 62 214 96 C212 110 206 116 214 124 C219 129 216 136 208 136 L198 137 C197 146 192 151 183 153 L166 156"
+                  stroke="#3ecf4a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M118 138 C132 156 158 162 178 156 L196 150" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M118 138 L114 108" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/>
+            <g stroke="#3ecf4a" stroke-width="1.5" opacity=".85" stroke-linecap="round">
+              <path d="M186 140 v8"/><path d="M177 143 v8"/><path d="M168 145 v8"/><path d="M159 146 v8"/>
+            </g>
+            <g stroke="#8dffa0" stroke-width="1.2" stroke-dasharray="5 5" opacity=".45">
+              <path d="M60 120 L250 106"/><path d="M196 40 L166 160"/>
+            </g>
+          </svg>
           <span class="gallery__tag" data-i18n="gallery.tag">Illustrative example</span>
         </div>
         <figcaption>
@@ -344,7 +390,14 @@
 
       <figure class="gallery__item" data-aos="zoom-in" data-aos-delay="400">
         <div class="gallery__frame">
-          <svg viewBox="0 0 48 48" fill="none" width="56" height="56"><path d="M10 24h10l4-10 6 20 4-10h6" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="xray-art" viewBox="0 0 300 180" fill="none" aria-hidden="true">
+            <rect x="78" y="18" width="144" height="144" rx="10" stroke="#2f6b3d" stroke-width="2" opacity=".6"/>
+            <path d="M137 44 Q137 32 150 32 Q163 32 163 44 Q163 60 158 76 Q155 88 152 88 Q150 88 150 74 Q150 88 148 88 Q145 88 142 76 Q137 60 137 44 Z"
+                  stroke="#3ecf4a" stroke-width="2" fill="rgba(62,207,74,.08)" stroke-linejoin="round"/>
+            <g stroke="#3ecf4a" stroke-width="2.4" stroke-linecap="round" opacity=".8">
+              <path d="M100 112 h100"/><path d="M100 128 h78"/><path d="M100 144 h56"/>
+            </g>
+          </svg>
           <span class="gallery__tag" data-i18n="gallery.tag">Illustrative example</span>
         </div>
         <figcaption>
@@ -535,6 +588,10 @@
         <div class="hours-card__head">
           <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="9" stroke="#3ecf4a" stroke-width="2" fill="none"/><path d="M12 7v5l3.5 2" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
           <h3 data-i18n="hours.title">Working Hours</h3>
+          <span class="hours-status" data-hours-status>
+            <span class="hours-status__dot"></span>
+            <span class="hours-status__text" data-i18n="hours.openNow">Open now</span>
+          </span>
         </div>
         <ul class="hours-list">
           <li><span data-i18n="hours.monFri">Mon – Fri</span><span>09:00 – 20:00</span></li>

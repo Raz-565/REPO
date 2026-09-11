@@ -131,6 +131,8 @@ const I18N = {
     'hours.sat': 'Saturday',
     'hours.sun': 'Sunday',
     'hours.closed': 'Closed',
+    'hours.openNow': 'Open now',
+    'hours.closedNow': 'Closed now',
     'hours.note': 'Hours may vary on public holidays — please call ahead to confirm.',
 
     'cta.title': 'Need a 3D scan for your treatment plan?',
@@ -288,6 +290,8 @@ const I18N = {
     'hours.sat': 'Շաբաթ',
     'hours.sun': 'Կիրակի',
     'hours.closed': 'Փակ է',
+    'hours.openNow': 'Բաց է հիմա',
+    'hours.closedNow': 'Փակ է հիմա',
     'hours.note': 'Ժամերը կարող են փոփոխվել տոն օրերին, խնդրում ենք նախապես զանգահարել՝ ճշտելու համար։',
 
     'cta.title': 'Պե՞տք է 3D սկանավորում Ձեր բուժման պլանի համար։',
@@ -445,6 +449,8 @@ const I18N = {
     'hours.sat': 'Суббота',
     'hours.sun': 'Воскресенье',
     'hours.closed': 'Выходной',
+    'hours.openNow': 'Сейчас открыто',
+    'hours.closedNow': 'Сейчас закрыто',
     'hours.note': 'Часы работы могут отличаться в праздничные дни — пожалуйста, звоните заранее, чтобы уточнить.',
 
     'cta.title': 'Нужен 3D-скан для плана лечения?',

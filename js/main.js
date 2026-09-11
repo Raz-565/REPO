@@ -183,4 +183,57 @@ document.addEventListener('DOMContentLoaded', () => {
       window.open(`https://wa.me/37499600032?text=${text}`, '_blank', 'noopener');
     });
   }
+
+  /* ---- Live "open now / closed now" badge ----
+     Resolved against Yerevan time, not the visitor's own clock, so someone
+     browsing from another country still sees the clinic's real status. */
+  const OPENING_HOURS = {
+    Mon: [9, 20], Tue: [9, 20], Wed: [9, 20], Thu: [9, 20], Fri: [9, 20],
+    Sat: [9, 17], Sun: null
+  };
+
+  const isOpenInYerevan = () => {
+    let weekday, hour, minute;
+    try {
+      const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Yerevan', weekday: 'short',
+        hour: '2-digit', minute: '2-digit', hour12: false
+      }).formatToParts(new Date());
+      const pick = (type) => (parts.find(p => p.type === type) || {}).value;
+      weekday = pick('weekday');
+      hour = parseInt(pick('hour'), 10);
+      minute = parseInt(pick('minute'), 10);
+    } catch (e) {
+      const now = new Date();
+      weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][now.getDay()];
+      hour = now.getHours();
+      minute = now.getMinutes();
+    }
+
+    if (hour === 24) hour = 0;
+    const span = OPENING_HOURS[weekday];
+    if (!span) return false;
+
+    const minutes = hour * 60 + minute;
+    return minutes >= span[0] * 60 && minutes < span[1] * 60;
+  };
+
+  const renderHoursStatus = () => {
+    const open = isOpenInYerevan();
+    const key = open ? 'hours.openNow' : 'hours.closedNow';
+
+    document.querySelectorAll('[data-hours-status]').forEach(badge => {
+      badge.classList.toggle('is-open', open);
+      badge.classList.toggle('is-closed', !open);
+
+      const label = badge.querySelector('.hours-status__text');
+      if (!label) return;
+      // Keep the i18n key in sync so switching language re-renders correctly.
+      label.setAttribute('data-i18n', key);
+      label.textContent = translate(key);
+    });
+  };
+
+  renderHoursStatus();
+  setInterval(renderHoursStatus, 60000);
 });
