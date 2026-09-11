@@ -5,9 +5,9 @@
   --card:#ffffff;
   --card-2:#f1f6f2;
   --border:#dbe8de;
-  --green:#3ecf4a;
-  --green-light:#178035;
-  --green-dim:rgba(62,207,74,.14);
+  --green:#29B902;
+  --green-light:#1C7F02;
+  --green-dim:rgba(41,185,2,.14);
   --text:#16211c;
   --text-muted:#52625a;
   /* A couple of spots (the hero's scan mockup, the closing CTA band) keep a
@@ -57,10 +57,10 @@ section{position:relative}
   white-space:nowrap;
 }
 .btn--primary{
-  background:linear-gradient(135deg,var(--green),#2ea63a);
-  color:#08130a;box-shadow:0 8px 24px -8px rgba(62,207,74,.55);
+  background:linear-gradient(135deg,var(--green),#1f9102);
+  color:#08130a;box-shadow:0 8px 24px -8px rgba(41,185,2,.55);
 }
-.btn--primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(62,207,74,.7)}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(41,185,2,.7)}
 .btn--ghost{background:transparent;border-color:var(--border);color:var(--text)}
 .btn--ghost:hover{border-color:var(--green);color:var(--green-light);transform:translateY(-2px)}
 .btn--lg{padding:16px 32px;font-size:15.5px}
@@ -157,7 +157,7 @@ section{position:relative}
 .lang-switch__menu li.is-active{color:var(--green-light)}
 .lang-switch__code{font-size:11px;font-weight:700;letter-spacing:.05em;opacity:.7}
 
-.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;flex-shrink:0;background:none;border:none;cursor:pointer;z-index:120}
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;flex-shrink:0;background:none;border:none;cursor:pointer;z-index:130}
 .burger span{width:100%;height:2px;background:var(--text);transition:transform .3s ease,opacity .3s ease}
 .burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .burger.is-open span:nth-child(2){opacity:0}
@@ -171,14 +171,14 @@ section{position:relative}
 .hero__bg{position:absolute;inset:0;z-index:0}
 .hero__grid{
   position:absolute;inset:-10%;
-  background-image:linear-gradient(rgba(62,207,74,.09) 1px,transparent 1px),
-                    linear-gradient(90deg,rgba(62,207,74,.09) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(41,185,2,.09) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(41,185,2,.09) 1px,transparent 1px);
   background-size:52px 52px;
   mask-image:radial-gradient(ellipse at 60% 30%,black 10%,transparent 70%);
 }
 .hero__glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5}
 .hero__glow--a{width:520px;height:520px;background:var(--green);top:-160px;right:-120px;opacity:.24}
-.hero__glow--b{width:420px;height:420px;background:#2fa84a;bottom:-160px;left:-100px;opacity:.22}
+.hero__glow--b{width:420px;height:420px;background:#25a004;bottom:-160px;left:-100px;opacity:.22}
 
 /* stretch, not center: the visual grows to the text column's height so long
    translations (Armenian especially) can't leave dead space beside it */
@@ -216,13 +216,13 @@ section{position:relative}
 /* brand tint over the grey radiograph, kept subtle so it still reads as real */
 .scan-frame::after{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(circle at 50% 45%,rgba(62,207,74,.14),transparent 72%);
+  background:radial-gradient(circle at 50% 45%,rgba(41,185,2,.14),transparent 72%);
 }
 /* the animation, relocated: a quiet scan line instead of the spinning radar */
 .scan-line{
   position:absolute;left:0;right:0;height:2px;z-index:1;
   background:linear-gradient(90deg,transparent,rgba(141,255,160,.8),transparent);
-  box-shadow:0 0 16px rgba(62,207,74,.55);
+  box-shadow:0 0 16px rgba(41,185,2,.55);
   animation:scanSweep 6s ease-in-out infinite;
 }
 @keyframes scanSweep{0%,100%{top:3%}50%{top:95%}}
@@ -263,8 +263,8 @@ section{position:relative}
   padding:5px 11px;border-radius:999px;
 }
 .hours-status__dot{width:7px;height:7px;border-radius:50%;flex:none}
-.hours-status.is-open{background:rgba(62,207,74,.15);color:#178035}
-.hours-status.is-open .hours-status__dot{background:#3ecf4a;animation:blink 1.6s ease-in-out infinite}
+.hours-status.is-open{background:rgba(41,185,2,.15);color:#1C7F02}
+.hours-status.is-open .hours-status__dot{background:#29B902;animation:blink 1.6s ease-in-out infinite}
 .hours-status.is-closed{background:rgba(150,92,84,.13);color:#8a4a42}
 .hours-status.is-closed .hours-status__dot{background:#b5675c}
 .hours-card__head .hours-status{margin-left:auto}
@@ -300,7 +300,7 @@ section{position:relative}
   background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
   padding:30px;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
 }
-.service-card:hover{transform:translateY(-6px);border-color:var(--green);box-shadow:0 20px 40px -18px rgba(62,207,74,.35)}
+.service-card:hover{transform:translateY(-6px);border-color:var(--green);box-shadow:0 20px 40px -18px rgba(41,185,2,.35)}
 .service-card__icon{
   width:52px;height:52px;border-radius:12px;background:var(--green-dim);
   display:flex;align-items:center;justify-content:center;margin-bottom:18px;
@@ -315,7 +315,7 @@ section{position:relative}
    scan screen — so their contents need on-dark colors, not the page tokens. */
 .gallery__frame{
   position:relative;aspect-ratio:4/3;overflow:hidden;
-  background:radial-gradient(circle at 50% 45%,rgba(62,207,74,.10),transparent 70%),var(--surface-dark);
+  background:radial-gradient(circle at 50% 45%,rgba(41,185,2,.10),transparent 70%),var(--surface-dark);
   border:1px solid var(--surface-dark-border);
   border-radius:var(--radius);display:flex;align-items:center;justify-content:center;
   margin-bottom:16px;transition:border-color .3s ease;
@@ -328,7 +328,7 @@ section{position:relative}
 .gallery__tag{
   position:absolute;bottom:10px;left:10px;right:10px;text-align:center;
   font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark-accent);
-  background:rgba(62,207,74,.14);border-radius:999px;padding:5px 8px;
+  background:rgba(41,185,2,.14);border-radius:999px;padding:5px 8px;
 }
 .gallery__item figcaption{display:flex;flex-direction:column;gap:2px}
 .gallery__item strong{font-size:15px}
@@ -432,7 +432,7 @@ section{position:relative}
 }
 .cta__inner::before{
   content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 20% 20%,rgba(62,207,74,.25),transparent 45%);
+  background:radial-gradient(circle at 20% 20%,rgba(41,185,2,.25),transparent 45%);
 }
 .cta__inner h2{font-size:clamp(26px,3.4vw,38px);position:relative;margin-bottom:12px;color:var(--on-dark-text)}
 .cta__inner p{color:var(--on-dark-text-muted);position:relative;margin-bottom:30px}
@@ -491,10 +491,18 @@ section{position:relative}
 }
 /* Shared mobile/collapsed nav dropdown — used both by the 800px English breakpoint
    and the earlier non-English breakpoint above, wherever .burger is visible */
+/* Anchored to the navbar's own bottom edge (top:100%) rather than a hardcoded
+   offset — the navbar animates between 84px and 70px, so a fixed value left a
+   strip of the page showing through above the menu. */
 .navbar.is-open .navlinks{
-  display:flex;position:fixed;inset:0;top:70px;background:var(--bg);
+  display:flex;position:absolute;top:100%;left:0;right:0;
+  height:calc(100vh - 100%);
+  height:calc(100dvh - 100%);
+  z-index:120;overflow-y:auto;overscroll-behavior:contain;
+  background:var(--bg);
   flex-direction:column;align-items:flex-start;gap:0;padding:20px 24px;border-top:1px solid var(--border);
 }
+body.nav-open{overflow:hidden}                    /* stop the page moving behind the overlay */
 .navbar.is-open .navlinks__link{width:100%;padding:16px 0;border-bottom:1px solid var(--border);white-space:normal}
 @media (max-width:1040px){
   .navlinks,.navbar__phone{display:none}

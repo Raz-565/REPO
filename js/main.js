@@ -27,24 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const navlinks = document.getElementById('navlinks');
 
   if (burger) {
-    burger.addEventListener('click', () => {
-      const open = navbar.classList.toggle('is-open');
+    const setNav = (open) => {
+      navbar.classList.toggle('is-open', open);
       burger.classList.toggle('is-open', open);
-      burger.setAttribute('aria-expanded', open);
-    });
+      burger.setAttribute('aria-expanded', String(open));
+      // locking the body stops the page scrolling behind the open overlay
+      document.body.classList.toggle('nav-open', open);
+    };
+
+    burger.addEventListener('click', () => setNav(!navbar.classList.contains('is-open')));
 
     navlinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navbar.classList.remove('is-open');
-        burger.classList.remove('is-open');
-      });
+      link.addEventListener('click', () => setNav(false));
     });
 
+    // must match the breakpoint where the burger stops being shown (1040px)
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 800) {
-        navbar.classList.remove('is-open');
-        burger.classList.remove('is-open');
-      }
+      if (window.innerWidth > 1040) setNav(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setNav(false);
     });
   }
 
