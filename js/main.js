@@ -131,4 +131,56 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
     });
   }
+
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll('.faq__question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq__item');
+      const isOpen = item.classList.contains('is-open');
+
+      item.parentElement.querySelectorAll('.faq__item.is-open').forEach(open => {
+        if (open !== item) {
+          open.classList.remove('is-open');
+          open.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      item.classList.toggle('is-open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  /* ---- Book form -> pre-filled WhatsApp message ---- */
+  const bookForm = document.getElementById('bookForm');
+
+  const translate = (key) => {
+    const lang = document.documentElement.getAttribute('lang') || 'en';
+    if (typeof I18N === 'undefined') return key;
+    return (I18N[lang] && I18N[lang][key]) || (I18N.en && I18N.en[key]) || key;
+  };
+
+  if (bookForm) {
+    bookForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = bookForm.name.value.trim();
+      const phone = bookForm.phone.value.trim();
+      const serviceSelect = bookForm.service;
+      const service = serviceSelect.options[serviceSelect.selectedIndex].text;
+      const date = bookForm.date.value;
+      const message = bookForm.message.value.trim();
+
+      const lines = [
+        translate('book.waGreeting'),
+        `${translate('book.waName')}: ${name}`,
+        `${translate('book.waPhone')}: ${phone}`,
+        `${translate('book.waService')}: ${service}`
+      ];
+      if (date) lines.push(`${translate('book.waDate')}: ${date}`);
+      if (message) lines.push(`${translate('book.waMessage')}: ${message}`);
+
+      const text = encodeURIComponent(lines.join('\n'));
+      window.open(`https://wa.me/37499600032?text=${text}`, '_blank', 'noopener');
+    });
+  }
 });

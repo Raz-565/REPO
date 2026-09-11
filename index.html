@@ -1,23 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D LAB — 3D Dental X-Ray &amp; Diagnostic Center, Yerevan</title>
-<meta name="description" content="3D LAB is a 3D dental X-ray and diagnostic imaging center in Yerevan, Armenia — CBCT 3D scans, panoramic and cephalometric X-rays, fast digital reports.">
-<meta property="og:title" content="3D LAB — 3D Dental X-Ray & Diagnostic Center">
-<meta property="og:description" content="Precision 3D dental imaging in Yerevan. CBCT scans, panoramic & cephalometric X-rays, same-day digital reports.">
+<title id="pageTitle">3D LAB — 3D Dental X-Ray &amp; Diagnostic Center, Yerevan</title>
+<meta id="metaDescription" name="description" content="3D LAB is a 3D dental X-ray and diagnostic imaging center in Yerevan, Armenia — CBCT 3D scans, panoramic and cephalometric X-rays, fast digital reports.">
+<meta id="metaOgTitle" property="og:title" content="3D LAB — 3D Dental X-Ray & Diagnostic Center">
+<meta id="metaOgDescription" property="og:description" content="Precision 3D dental imaging in Yerevan. CBCT scans, panoramic & cephalometric X-rays, same-day digital reports.">
 <meta property="og:image" content="assets/logo.svg">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <link rel="stylesheet" href="css/style.css">
+
+<!--
+  Structured data (schema.org) so Google can show 3D LAB as a rich local-business
+  result. Fill in "url" once the site has a real domain.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "3D LAB",
+  "alternateName": "Ճառագայթային ախտորոշիչ կենտրոն",
+  "image": "assets/logo.svg",
+  "telephone": "+37499600032",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Koryun street 5/3",
+    "addressLocality": "Yerevan",
+    "postalCode": "0070",
+    "addressCountry": "AM"
+  },
+  "sameAs": ["https://www.facebook.com/profile.php?id=100063940389616"],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
+  ]
+}
+</script>
 </head>
 <body>
 
 <div class="scan-progress" id="scanProgress"></div>
+
+<a href="https://wa.me/37499600032" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chat on WhatsApp" data-i18n-attr="aria-label:whatsapp.aria">
+  <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.29.638 4.43 1.744 6.256L4 29l7.94-1.703A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3zm.02 21.6a9.55 9.55 0 0 1-4.87-1.33l-.35-.207-3.55.762.76-3.46-.23-.36A9.54 9.54 0 1 1 16.02 24.6zm5.4-7.14c-.296-.148-1.75-.864-2.022-.963-.272-.099-.47-.148-.667.148-.198.297-.766.963-.94 1.161-.173.198-.346.222-.642.074-.296-.148-1.25-.46-2.38-1.466-.879-.784-1.472-1.752-1.645-2.048-.173-.297-.019-.457.13-.604.133-.132.297-.346.445-.519.148-.173.198-.297.297-.495.099-.198.05-.371-.025-.519-.074-.148-.667-1.607-.914-2.202-.24-.579-.485-.5-.667-.51l-.567-.01c-.198 0-.52.074-.792.371-.272.297-1.04 1.016-1.04 2.478s1.065 2.875 1.213 3.073c.148.198 2.097 3.204 5.08 4.493.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.75-.716 1.997-1.407.247-.692.247-1.284.173-1.407-.074-.123-.271-.198-.567-.346z"/></svg>
+</a>
 
 <!-- ===== Header ===== -->
 <header class="navbar" id="navbar">
@@ -28,12 +59,12 @@
     </a>
 
     <nav class="navlinks" id="navlinks">
-      <a href="#home" class="navlinks__link is-active">Home</a>
-      <a href="#about" class="navlinks__link">About</a>
-      <a href="#services" class="navlinks__link">Services</a>
-      <a href="#process" class="navlinks__link">How It Works</a>
-      <a href="#location" class="navlinks__link">Location</a>
-      <a href="#contact" class="navlinks__link">Contact</a>
+      <a href="#home" class="navlinks__link is-active" data-i18n="nav.home">Home</a>
+      <a href="#about" class="navlinks__link" data-i18n="nav.about">About</a>
+      <a href="#services" class="navlinks__link" data-i18n="nav.services">Services</a>
+      <a href="#process" class="navlinks__link" data-i18n="nav.process">How It Works</a>
+      <a href="#location" class="navlinks__link" data-i18n="nav.location">Location</a>
+      <a href="#contact" class="navlinks__link" data-i18n="nav.contact">Contact</a>
     </nav>
 
     <div class="navbar__actions">
@@ -41,10 +72,30 @@
         <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1.1l-2.1 2.1z"/></svg>
         099 600 032
       </a>
-      <a href="#contact" class="btn btn--primary">Book a Scan</a>
+
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-haspopup="listbox" aria-expanded="false" data-i18n-attr="aria-label:lang.select">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.93 6h-2.95a15.6 15.6 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8zM12 4.04c.83 1.2 1.5 2.53 1.95 3.96h-3.9c.45-1.43 1.12-2.76 1.95-3.96zM4.26 14a8.1 8.1 0 0 1 0-4h3.38a16.7 16.7 0 0 0 0 4H4.26zm.81 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.07 16zm2.95-8H5.07a8.03 8.03 0 0 1 4.33-3.56A15.6 15.6 0 0 0 8.02 8zM12 19.96A15.6 15.6 0 0 1 10.05 16h3.9A15.6 15.6 0 0 1 12 19.96zM14.36 14H9.64a14.66 14.66 0 0 1 0-4h4.72a14.66 14.66 0 0 1 0 4zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14a16.7 16.7 0 0 0 0-4h3.38a8.1 8.1 0 0 1 0 4h-3.38z"/></svg>
+          <span class="lang-switch__current" id="langCurrent">EN</span>
+          <svg class="lang-switch__chev" viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu" role="listbox">
+          <li role="option" data-lang="en" class="is-active">
+            <span>English</span><span class="lang-switch__code">EN</span>
+          </li>
+          <li role="option" data-lang="hy">
+            <span>Հայերեն</span><span class="lang-switch__code">HY</span>
+          </li>
+          <li role="option" data-lang="ru">
+            <span>Русский</span><span class="lang-switch__code">RU</span>
+          </li>
+        </ul>
+      </div>
+
+      <a href="#book" class="btn btn--primary" data-i18n="nav.bookScan">Book a Scan</a>
     </div>
 
-    <button class="burger" id="burger" aria-label="Toggle menu">
+    <button class="burger" id="burger" aria-label="Toggle menu" data-i18n-attr="aria-label:burger.toggle">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -60,20 +111,24 @@
 
   <div class="container hero__inner">
     <div class="hero__copy">
-      <p class="eyebrow" data-aos="fade-right">Ախտորոշիչ կենտրոն · Diagnostic Center</p>
-      <h1 class="hero__title" data-aos="fade-right" data-aos-delay="100">Precision 3D Imaging,<br>Built for Modern Dentistry</h1>
-      <p class="hero__desc" data-aos="fade-right" data-aos-delay="200">
+      <p class="eyebrow" data-aos="fade-right" data-i18n="hero.eyebrow">Diagnostic Center</p>
+      <h1 class="hero__title" data-aos="fade-right" data-aos-delay="100" data-i18n-html="hero.titleHtml">Precision 3D Imaging,<br>Built for Modern Dentistry</h1>
+      <p class="hero__desc" data-aos="fade-right" data-aos-delay="200" data-i18n="hero.desc">
         3D LAB is Yerevan's dedicated 3D dental X-ray and diagnostic imaging center.
         High-resolution CBCT scans, panoramic and cephalometric X-rays — read fast,
         delivered digitally, trusted by dentists and patients alike.
       </p>
       <div class="hero__cta" data-aos="fade-right" data-aos-delay="300">
-        <a href="#contact" class="btn btn--primary btn--lg">Book a Scan</a>
-        <a href="https://www.facebook.com/p/3D-LAB-100063940389616/" target="_blank" rel="noopener" class="btn btn--ghost btn--lg">Message on Facebook</a>
+        <a href="#book" class="btn btn--primary btn--lg" data-i18n="nav.bookScan">Book a Scan</a>
+        <a href="https://wa.me/37499600032" target="_blank" rel="noopener" class="btn btn--ghost btn--lg" data-i18n="hero.ctaWhatsapp">WhatsApp Us</a>
+        <a href="https://www.facebook.com/profile.php?id=100063940389616" target="_blank" rel="noopener" class="btn btn--ghost btn--lg" data-i18n="hero.ctaMessage">Message on Facebook</a>
       </div>
       <div class="hero__meta" data-aos="fade-up" data-aos-delay="400">
-        <div class="hero__meta-item"><strong>Koryun St. 5/3</strong><span>Yerevan, Armenia</span></div>
-        <div class="hero__meta-item"><strong>099 600 032</strong><span>Call or message</span></div>
+        <div class="hero__meta-item"><strong data-i18n="hero.metaAddressStreet">Koryun St. 5/3</strong><span data-i18n="hero.metaCity">Yerevan, Armenia</span></div>
+        <div class="hero__meta-item"><strong>099 600 032</strong><span data-i18n="hero.metaCallLabel">Call or message</span></div>
+        <a class="hero__meta-item hero__meta-item--link" href="https://www.facebook.com/profile.php?id=100063940389616" target="_blank" rel="noopener">
+          <strong>608+</strong><span data-i18n="hero.metaFollowers">followers on Facebook</span>
+        </a>
       </div>
     </div>
 
@@ -106,7 +161,29 @@
   </div>
 
   <div class="hero__partners container" data-aos="fade-up" data-aos-delay="200">
-    <p class="hero__partners-title">Trusted for referrals by dental clinics across Yerevan</p>
+    <p class="hero__partners-title" data-i18n="hero.partnersTitle">Trusted for referrals by dental clinics across Yerevan</p>
+  </div>
+</section>
+
+<!-- ===== Trust badges ===== -->
+<section class="trust">
+  <div class="container trust__grid">
+    <div class="trust__badge" data-aos="fade-up" data-aos-delay="0">
+      <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="#3ecf4a" stroke-width="2"/><path d="M20 10v20M10 20h20" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/></svg>
+      <span data-i18n="trust.badge1">Modern CBCT scanning equipment</span>
+    </div>
+    <div class="trust__badge" data-aos="fade-up" data-aos-delay="100">
+      <svg viewBox="0 0 40 40" fill="none"><path d="M20 6l12 5v9c0 8-5 13-12 15-7-2-12-7-12-15v-9l12-5z" stroke="#3ecf4a" stroke-width="2"/><path d="M14 20l4 4 8-8" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="trust.badge2">Radiation-safety compliant</span>
+    </div>
+    <div class="trust__badge" data-aos="fade-up" data-aos-delay="200">
+      <svg viewBox="0 0 40 40" fill="none"><path d="M12 26a6 6 0 0 1 1-11.9A8 8 0 0 1 28 16a5 5 0 0 1-1 9.9H12z" stroke="#3ecf4a" stroke-width="2"/><path d="M20 18v10M16 24l4 4 4-4" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="trust.badge3">Digital-first, same-day delivery</span>
+    </div>
+    <div class="trust__badge" data-aos="fade-up" data-aos-delay="300">
+      <svg viewBox="0 0 40 40" fill="none"><circle cx="12" cy="14" r="3" stroke="#3ecf4a" stroke-width="2"/><circle cx="28" cy="14" r="3" stroke="#3ecf4a" stroke-width="2"/><circle cx="20" cy="28" r="3" stroke="#3ecf4a" stroke-width="2"/><path d="M14.5 16.5l4 8M25.5 16.5l-4 8" stroke="#3ecf4a" stroke-width="2"/></svg>
+      <span data-i18n="trust.badge4">Trusted by clinics across Yerevan</span>
+    </div>
   </div>
 </section>
 
@@ -114,9 +191,9 @@
 <section class="about" id="about">
   <div class="container about__inner">
     <div class="about__copy">
-      <p class="eyebrow" data-aos="fade-up">Who We Are</p>
-      <h2 data-aos="fade-up" data-aos-delay="100">A dedicated 3D imaging lab, not a general clinic.</h2>
-      <p class="text-muted" data-aos="fade-up" data-aos-delay="200">
+      <p class="eyebrow" data-aos="fade-up" data-i18n="about.eyebrow">Who We Are</p>
+      <h2 data-aos="fade-up" data-aos-delay="100" data-i18n="about.title">A dedicated 3D imaging lab, not a general clinic.</h2>
+      <p class="text-muted" data-aos="fade-up" data-aos-delay="200" data-i18n="about.desc">
         3D LAB focuses on one thing: accurate, low-radiation 3D dental diagnostics.
         We work directly with patients and partner with dental clinics who need
         fast, reliable CBCT and X-ray imaging without sending patients across town.
@@ -125,13 +202,16 @@
       </p>
       <div class="about__points">
         <div class="about__point" data-aos="fade-up" data-aos-delay="300">
-          <span class="check">✓</span> Modern CBCT 3D scanning equipment
+          <span class="check">✓</span> <span data-i18n="about.point1">Modern CBCT 3D scanning equipment</span>
         </div>
         <div class="about__point" data-aos="fade-up" data-aos-delay="350">
-          <span class="check">✓</span> Digital delivery — files ready same day
+          <span class="check">✓</span> <span data-i18n="about.point2">Digital delivery — files ready same day</span>
         </div>
         <div class="about__point" data-aos="fade-up" data-aos-delay="400">
-          <span class="check">✓</span> Central location on Koryun Street
+          <span class="check">✓</span> <span data-i18n="about.point3">Central location on Koryun Street</span>
+        </div>
+        <div class="about__point" data-aos="fade-up" data-aos-delay="450">
+          <span class="check">✓</span> <span data-i18n="about.point4">Files also available in DICOM format</span>
         </div>
       </div>
     </div>
@@ -139,17 +219,17 @@
     <div class="about__stats" data-aos="fade-left">
       <div class="stat-card">
         <div class="stat-card__value" data-count="5">0</div>
-        <p class="stat-card__label">minute average scan time</p>
+        <p class="stat-card__label" data-i18n="about.statScanLabel">minute average scan time</p>
       </div>
       <div class="stat-card">
         <div class="stat-card__value" data-count="24">0</div>
-        <p class="stat-card__label">hour digital report turnaround</p>
+        <p class="stat-card__label" data-i18n="about.statReportLabel">hour digital report turnaround</p>
       </div>
       <div class="stat-card">
         <div class="stat-card__value low-dose">
-          <span>Low</span>
+          <span data-i18n="about.statDoseValue">Low</span>
         </div>
-        <p class="stat-card__label">radiation-dose CBCT technology</p>
+        <p class="stat-card__label" data-i18n="about.statDoseLabel">radiation-dose CBCT technology</p>
       </div>
     </div>
   </div>
@@ -159,9 +239,9 @@
 <section class="services" id="services">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow" data-aos="fade-up">What We Offer</p>
-      <h2 data-aos="fade-up" data-aos-delay="100">3D &amp; digital imaging services</h2>
-      <p class="text-muted section-head__desc" data-aos="fade-up" data-aos-delay="200">
+      <p class="eyebrow" data-aos="fade-up" data-i18n="services.eyebrow">What We Offer</p>
+      <h2 data-aos="fade-up" data-aos-delay="100" data-i18n="services.title">3D &amp; digital imaging services</h2>
+      <p class="text-muted section-head__desc" data-aos="fade-up" data-aos-delay="200" data-i18n="services.desc">
         Every scan is captured, reviewed and exported digitally — ready to bring
         to your dentist or orthodontist the same day.
       </p>
@@ -172,49 +252,106 @@
         <div class="service-card__icon">
           <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="6" width="36" height="36" rx="8" stroke="#3ecf4a" stroke-width="2"/><path d="M14 24h20M24 14v20" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <h3>CBCT 3D Scan</h3>
-        <p>Full jaw cone-beam 3D imaging for implant planning, surgery guidance and complex diagnostics.</p>
+        <h3 data-i18n="services.service1Title">CBCT 3D Scan</h3>
+        <p data-i18n="services.service1Desc">Full jaw cone-beam 3D imaging for implant planning, surgery guidance and complex diagnostics.</p>
       </article>
 
       <article class="service-card" data-aos="zoom-in" data-aos-delay="200">
         <div class="service-card__icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M8 30c4-14 28-14 32 0" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="20" r="4" stroke="#3ecf4a" stroke-width="2"/></svg>
         </div>
-        <h3>Panoramic X-Ray (OPG)</h3>
-        <p>A full-mouth overview in a single image — ideal for general checkups and treatment planning.</p>
+        <h3 data-i18n="services.service2Title">Panoramic X-Ray (OPG)</h3>
+        <p data-i18n="services.service2Desc">A full-mouth overview in a single image — ideal for general checkups and treatment planning.</p>
       </article>
 
       <article class="service-card" data-aos="zoom-in" data-aos-delay="300">
         <div class="service-card__icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M10 38 34 10M18 38h20" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <h3>Cephalometric X-Ray</h3>
-        <p>Skull-profile imaging used by orthodontists to plan braces and jaw alignment treatment.</p>
+        <h3 data-i18n="services.service3Title">Cephalometric X-Ray</h3>
+        <p data-i18n="services.service3Desc">Skull-profile imaging used by orthodontists to plan braces and jaw alignment treatment.</p>
       </article>
 
       <article class="service-card" data-aos="zoom-in" data-aos-delay="400">
         <div class="service-card__icon">
           <svg viewBox="0 0 48 48" fill="none"><rect x="16" y="8" width="16" height="32" rx="3" stroke="#3ecf4a" stroke-width="2"/><path d="M16 18h16" stroke="#3ecf4a" stroke-width="2"/></svg>
         </div>
-        <h3>Single Tooth X-Ray</h3>
-        <p>Targeted periapical imaging for a fast look at one tooth or a specific problem area.</p>
+        <h3 data-i18n="services.service4Title">Single Tooth X-Ray</h3>
+        <p data-i18n="services.service4Desc">Targeted periapical imaging for a fast look at one tooth or a specific problem area.</p>
       </article>
 
       <article class="service-card" data-aos="zoom-in" data-aos-delay="500">
         <div class="service-card__icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M10 24h10l4-10 6 20 4-10h6" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Digital Diagnostic Report</h3>
-        <p>Clear written notes alongside your images, so you and your dentist know exactly what to look at.</p>
+        <h3 data-i18n="services.service5Title">Digital Diagnostic Report</h3>
+        <p data-i18n="services.service5Desc">Clear written notes alongside your images, so you and your dentist know exactly what to look at.</p>
       </article>
 
       <article class="service-card" data-aos="zoom-in" data-aos-delay="600">
         <div class="service-card__icon">
           <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#3ecf4a" stroke-width="2"/><path d="M24 16v16M16 24h16" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <h3>Referrals for Clinics</h3>
-        <p>We partner with dental clinics across Yerevan that need reliable 3D imaging on demand.</p>
+        <h3 data-i18n="services.service6Title">Referrals for Clinics</h3>
+        <p data-i18n="services.service6Desc">We partner with dental clinics across Yerevan that need reliable 3D imaging on demand.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Gallery (illustrative deliverables) ===== -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow" data-aos="fade-up" data-i18n="gallery.eyebrow">See The Output</p>
+      <h2 data-aos="fade-up" data-aos-delay="100" data-i18n="gallery.title">What you actually receive</h2>
+      <p class="text-muted section-head__desc" data-aos="fade-up" data-aos-delay="200" data-i18n="gallery.desc">Illustrative examples of the imaging formats we deliver — your own files are higher resolution and reviewed together with your report.</p>
+    </div>
+
+    <div class="gallery__grid">
+      <figure class="gallery__item" data-aos="zoom-in" data-aos-delay="100">
+        <div class="gallery__frame">
+          <svg viewBox="0 0 48 48" fill="none" width="56" height="56"><rect x="6" y="6" width="36" height="36" rx="8" stroke="#3ecf4a" stroke-width="2"/><path d="M14 24h20M24 14v20" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="gallery__tag" data-i18n="gallery.tag">Illustrative example</span>
+        </div>
+        <figcaption>
+          <strong data-i18n="services.service1Title">CBCT 3D Scan</strong>
+          <span data-i18n="gallery.captionCbct">Full jaw volumetric render</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery__item" data-aos="zoom-in" data-aos-delay="200">
+        <div class="gallery__frame">
+          <svg viewBox="0 0 48 48" fill="none" width="56" height="56"><path d="M8 30c4-14 28-14 32 0" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="20" r="4" stroke="#3ecf4a" stroke-width="2"/></svg>
+          <span class="gallery__tag" data-i18n="gallery.tag">Illustrative example</span>
+        </div>
+        <figcaption>
+          <strong data-i18n="services.service2Title">Panoramic X-Ray (OPG)</strong>
+          <span data-i18n="gallery.captionPano">Full-mouth single-image overview</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery__item" data-aos="zoom-in" data-aos-delay="300">
+        <div class="gallery__frame">
+          <svg viewBox="0 0 48 48" fill="none" width="56" height="56"><path d="M10 38 34 10M18 38h20" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="gallery__tag" data-i18n="gallery.tag">Illustrative example</span>
+        </div>
+        <figcaption>
+          <strong data-i18n="services.service3Title">Cephalometric X-Ray</strong>
+          <span data-i18n="gallery.captionCeph">Skull-profile orthodontic view</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery__item" data-aos="zoom-in" data-aos-delay="400">
+        <div class="gallery__frame">
+          <svg viewBox="0 0 48 48" fill="none" width="56" height="56"><path d="M10 24h10l4-10 6 20 4-10h6" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="gallery__tag" data-i18n="gallery.tag">Illustrative example</span>
+        </div>
+        <figcaption>
+          <strong data-i18n="services.service5Title">Digital Diagnostic Report</strong>
+          <span data-i18n="gallery.captionReport">Written findings alongside your images</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -223,30 +360,142 @@
 <section class="process" id="process">
   <div class="container">
     <div class="section-head section-head--center">
-      <p class="eyebrow" data-aos="fade-up">Simple Visit</p>
-      <h2 data-aos="fade-up" data-aos-delay="100">How a visit to 3D LAB works</h2>
+      <p class="eyebrow" data-aos="fade-up" data-i18n="process.eyebrow">Simple Visit</p>
+      <h2 data-aos="fade-up" data-aos-delay="100" data-i18n="process.title">How a visit to 3D LAB works</h2>
     </div>
 
     <div class="process__grid">
       <div class="process-card" data-aos="fade-up" data-aos-delay="100">
         <span class="process-card__num">01</span>
-        <h3>Book</h3>
-        <p>Call, message us on Facebook, or walk in — tell us which scan your dentist recommended.</p>
+        <h3 data-i18n="process.step1Title">Book</h3>
+        <p data-i18n="process.step1Desc">Call, message us on WhatsApp or Facebook, or walk in — tell us which scan your dentist recommended.</p>
       </div>
       <div class="process-card" data-aos="fade-up" data-aos-delay="200">
         <span class="process-card__num">02</span>
-        <h3>Scan</h3>
-        <p>Your 3D or X-ray scan takes just a few minutes on our imaging equipment.</p>
+        <h3 data-i18n="process.step2Title">Scan</h3>
+        <p data-i18n="process.step2Desc">Your 3D or X-ray scan takes just a few minutes on our imaging equipment.</p>
       </div>
       <div class="process-card" data-aos="fade-up" data-aos-delay="300">
         <span class="process-card__num">03</span>
-        <h3>Review</h3>
-        <p>We prepare your images and a short diagnostic report for your records.</p>
+        <h3 data-i18n="process.step3Title">Review</h3>
+        <p data-i18n="process.step3Desc">We prepare your images and a short diagnostic report for your records.</p>
       </div>
       <div class="process-card" data-aos="fade-up" data-aos-delay="400">
         <span class="process-card__num">04</span>
-        <h3>Receive</h3>
-        <p>Get your files digitally, ready to share with your dentist the same day.</p>
+        <h3 data-i18n="process.step4Title">Receive</h3>
+        <p data-i18n="process.step4Desc">Get your files digitally, ready to share with your dentist the same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Book / Inquiry ===== -->
+<section class="book" id="book">
+  <div class="container book__inner">
+    <div class="book__copy" data-aos="fade-right">
+      <p class="eyebrow" data-i18n="book.eyebrow">Book Now</p>
+      <h2 data-i18n="book.title">Request your scan in under a minute</h2>
+      <p class="text-muted" data-i18n="book.desc">Fill in a few details and we'll open a pre-filled WhatsApp message for you — just hit send and we'll confirm your visit.</p>
+      <div class="book__alt">
+        <a href="tel:+37499600032" class="book__alt-item">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#3ecf4a" d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1.1l-2.1 2.1z"/></svg>
+          <span>099 600 032</span>
+        </a>
+        <a href="https://wa.me/37499600032" target="_blank" rel="noopener" class="book__alt-item">
+          <svg viewBox="0 0 32 32" width="18" height="18" fill="#3ecf4a"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.29.638 4.43 1.744 6.256L4 29l7.94-1.703A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3zm.02 21.6a9.55 9.55 0 0 1-4.87-1.33l-.35-.207-3.55.762.76-3.46-.23-.36A9.54 9.54 0 1 1 16.02 24.6z"/></svg>
+          <span data-i18n="hero.ctaWhatsapp">WhatsApp Us</span>
+        </a>
+      </div>
+    </div>
+
+    <form class="book__form" id="bookForm" data-aos="fade-left">
+      <div class="book__field">
+        <label for="bookName" data-i18n="book.nameLabel">Full name</label>
+        <input type="text" id="bookName" name="name" required data-i18n-attr="placeholder:book.namePlaceholder" placeholder="Your name">
+      </div>
+      <div class="book__field">
+        <label for="bookPhone" data-i18n="book.phoneLabel">Phone number</label>
+        <input type="tel" id="bookPhone" name="phone" required data-i18n-attr="placeholder:book.phonePlaceholder" placeholder="099 000 000">
+      </div>
+      <div class="book__field">
+        <label for="bookService" data-i18n="book.serviceLabel">Scan type</label>
+        <select id="bookService" name="service">
+          <option value="" data-i18n="book.serviceAny">Not sure / ask us</option>
+          <option data-i18n="services.service1Title">CBCT 3D Scan</option>
+          <option data-i18n="services.service2Title">Panoramic X-Ray (OPG)</option>
+          <option data-i18n="services.service3Title">Cephalometric X-Ray</option>
+          <option data-i18n="services.service4Title">Single Tooth X-Ray</option>
+        </select>
+      </div>
+      <div class="book__field">
+        <label for="bookDate" data-i18n="book.dateLabel">Preferred date</label>
+        <input type="date" id="bookDate" name="date">
+      </div>
+      <div class="book__field book__field--full">
+        <label for="bookMessage" data-i18n="book.messageLabel">Message (optional)</label>
+        <textarea id="bookMessage" name="message" rows="3" data-i18n-attr="placeholder:book.messagePlaceholder" placeholder="Anything we should know?"></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary btn--lg book__submit" data-i18n="book.submit">Send via WhatsApp</button>
+      <p class="book__hint" data-i18n="book.hint">Opens WhatsApp with your details filled in — nothing is sent until you press send there.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow" data-aos="fade-up" data-i18n="faq.eyebrow">Good To Know</p>
+      <h2 data-aos="fade-up" data-aos-delay="100" data-i18n="faq.title">Frequently asked questions</h2>
+    </div>
+
+    <div class="faq__list">
+      <div class="faq__item">
+        <button class="faq__question" type="button" aria-expanded="false">
+          <span data-i18n="faq.q1">Do I need a referral from my dentist?</span>
+          <svg class="faq__chev" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="faq__answer"><p data-i18n="faq.a1">No — you can book directly with us. If you'd like, we're happy to send your images and report straight to your dentist or orthodontist.</p></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question" type="button" aria-expanded="false">
+          <span data-i18n="faq.q2">Is a CBCT 3D scan safe?</span>
+          <svg class="faq__chev" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="faq__answer"><p data-i18n="faq.a2">Our equipment uses low-dose CBCT technology, and every scan is limited to the area your dentist needs to see. Let our team know if you are pregnant or have any concerns before your scan.</p></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question" type="button" aria-expanded="false">
+          <span data-i18n="faq.q3">How long does it take, and when do I get results?</span>
+          <svg class="faq__chev" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="faq__answer"><p data-i18n="faq.a3">The scan itself takes about 5 minutes. Your digital images and diagnostic report are typically ready within 24 hours.</p></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question" type="button" aria-expanded="false">
+          <span data-i18n="faq.q4">How should I prepare for my visit?</span>
+          <svg class="faq__chev" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="faq__answer"><p data-i18n="faq.a4">Remove any metal jewelry, piercings or hair clips near your head and neck before scanning. Bring any referral notes from your dentist if you have them, though this isn't required.</p></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question" type="button" aria-expanded="false">
+          <span data-i18n="faq.q5">What payment methods do you accept?</span>
+          <svg class="faq__chev" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="faq__answer"><p data-i18n="faq.a5">Call or message us before your visit and our team will confirm the payment options currently available.</p></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question" type="button" aria-expanded="false">
+          <span data-i18n="faq.q6">Can dental clinics refer patients directly?</span>
+          <svg class="faq__chev" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="faq__answer"><p data-i18n="faq.a6">Yes — we partner with dental clinics across Yerevan that need reliable 3D imaging on demand. Message us on Facebook or WhatsApp to set up a referral arrangement.</p></div>
       </div>
     </div>
   </div>
@@ -256,27 +505,50 @@
 <section class="location" id="location">
   <div class="container location__inner">
     <div class="location__copy" data-aos="fade-right">
-      <p class="eyebrow">Find Us</p>
-      <h2>Visit 3D LAB in central Yerevan</h2>
+      <p class="eyebrow" data-i18n="location.eyebrow">Find Us</p>
+      <h2 data-i18n="location.title">Visit 3D LAB in central Yerevan</h2>
       <div class="location__card">
         <div class="location__row">
           <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#3ecf4a" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-          <div><strong>Koryun street 5/3</strong><span>Yerevan, Armenia, 0070</span></div>
+          <div><strong data-i18n="location.addressStreet">Koryun street 5/3</strong><span data-i18n="location.addressCity">Yerevan, Armenia, 0070</span></div>
         </div>
         <div class="location__row">
           <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#3ecf4a" d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1.1l-2.1 2.1z"/></svg>
-          <div><strong>099 600 032</strong><span>Call for today's hours</span></div>
+          <div><strong>099 600 032</strong><span data-i18n="location.phoneLabel">Call for today's hours</span></div>
+        </div>
+        <div class="location__row">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#3ecf4a" d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1.1l-2.1 2.1z"/></svg>
+          <div><strong>010 60 00 32</strong><span data-i18n="location.landlineLabel">Landline</span></div>
+        </div>
+        <div class="location__row">
+          <svg viewBox="0 0 32 32" width="20" height="20" fill="#3ecf4a"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.29.638 4.43 1.744 6.256L4 29l7.94-1.703A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3zm.02 21.6a9.55 9.55 0 0 1-4.87-1.33l-.35-.207-3.55.762.76-3.46-.23-.36A9.54 9.54 0 1 1 16.02 24.6z"/></svg>
+          <div><strong data-i18n="location.whatsappLabel">WhatsApp</strong><span data-i18n="location.whatsappHint">Chat with us instantly</span></div>
         </div>
         <div class="location__row">
           <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#3ecf4a" d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 12V8.24l-8 6-8-6V18h16z"/></svg>
-          <div><strong>Facebook Messenger</strong><span>Search "3D LAB"</span></div>
+          <div><strong data-i18n="location.messengerLabel">Facebook Messenger</strong><span data-i18n="location.messengerSearch">Search "3D LAB"</span></div>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=Koryun+street+5%2F3%2C+Yerevan%2C+Armenia" target="_blank" rel="noopener" class="btn btn--primary location__directions">Get Directions</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Koryun+street+5%2F3%2C+Yerevan%2C+Armenia" target="_blank" rel="noopener" class="btn btn--primary location__directions" data-i18n="location.directionsBtn">Get Directions</a>
+      </div>
+
+      <div class="hours-card" data-aos="fade-up">
+        <div class="hours-card__head">
+          <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="9" stroke="#3ecf4a" stroke-width="2" fill="none"/><path d="M12 7v5l3.5 2" stroke="#3ecf4a" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          <h3 data-i18n="hours.title">Working Hours</h3>
+        </div>
+        <ul class="hours-list">
+          <li><span data-i18n="hours.monFri">Mon – Fri</span><span>09:00 – 20:00</span></li>
+          <li><span data-i18n="hours.sat">Saturday</span><span>09:00 – 17:00</span></li>
+          <li><span data-i18n="hours.sun">Sunday</span><span data-i18n="hours.closed">Closed</span></li>
+        </ul>
+        <p class="hours-card__note" data-i18n="hours.note">Hours may vary on public holidays — please call ahead to confirm.</p>
       </div>
     </div>
     <div class="location__map" data-aos="fade-left">
       <iframe
         title="3D LAB location map"
+        id="locationMapFrame"
+        data-i18n-attr="title:location.mapTitle"
         src="https://www.google.com/maps?q=Koryun+street+5/3,+Yerevan,+Armenia&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
@@ -288,12 +560,16 @@
 <!-- ===== CTA ===== -->
 <section class="cta">
   <div class="container cta__inner" data-aos="zoom-in">
-    <h2>Need a 3D scan for your treatment plan?</h2>
-    <p>Call, message, or visit us on Koryun Street — most scans are ready the same day.</p>
+    <h2 data-i18n="cta.title">Need a 3D scan for your treatment plan?</h2>
+    <p data-i18n="cta.desc">Call, message, or visit us on Koryun Street — most scans are ready the same day.</p>
     <div class="cta__buttons">
-      <a href="tel:+37499600032" class="btn btn--primary btn--lg">Call 099 600 032</a>
-      <a href="#contact" class="btn btn--ghost btn--lg">Contact Us</a>
+      <a href="tel:+37499600032" class="btn btn--primary btn--lg" data-i18n="cta.callBtn">Call 099 600 032</a>
+      <a href="#contact" class="btn btn--ghost btn--lg" data-i18n="cta.contactBtn">Contact Us</a>
     </div>
+    <p class="cta__review">
+      <span data-i18n="cta.reviewPrompt">Already visited us?</span>
+      <a href="https://www.facebook.com/profile.php?id=100063940389616&sk=reviews" target="_blank" rel="noopener" data-i18n="cta.reviewLink">Leave us a review on Facebook</a>
+    </p>
   </div>
 </section>
 
@@ -305,7 +581,7 @@
         <img src="assets/logo.svg" alt="3D LAB" class="brand__logo">
         <span class="brand__text">3D<em>LAB</em></span>
       </a>
-      <p class="text-muted">3D dental X-ray &amp; diagnostic imaging center in Yerevan, Armenia.</p>
+      <p class="text-muted" data-i18n="footer.tagline">3D dental X-ray &amp; diagnostic imaging center in Yerevan, Armenia.</p>
       <div class="footer__contact">
         <a href="tel:+37499600032">
           <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1.1l-2.1 2.1z"/></svg>
@@ -313,44 +589,59 @@
         </a>
         <a href="https://www.google.com/maps/search/?api=1&query=Koryun+street+5%2F3%2C+Yerevan%2C+Armenia" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-          Koryun street 5/3, Yerevan, Armenia, 0070
+          <span data-i18n="footer.fullAddress">Koryun street 5/3, Yerevan, Armenia</span>
         </a>
       </div>
-      <a class="social-btn" href="https://www.facebook.com/p/3D-LAB-100063940389616/" target="_blank" rel="noopener" aria-label="3D LAB on Facebook">
-        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M13.5 21v-7.5H16l.5-3H13.5V8.5c0-.9.2-1.5 1.5-1.5H16.5V4.3C16.2 4.2 15.2 4 14 4c-2.4 0-4 1.5-4 4.2V10.5H7.5v3H10V21h3.5z"/></svg>
-      </a>
+      <div class="footer__social">
+        <a class="social-btn" href="https://www.facebook.com/profile.php?id=100063940389616" target="_blank" rel="noopener" aria-label="3D LAB on Facebook" data-i18n-attr="aria-label:footer.socialAria">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M13.5 21v-7.5H16l.5-3H13.5V8.5c0-.9.2-1.5 1.5-1.5H16.5V4.3C16.2 4.2 15.2 4 14 4c-2.4 0-4 1.5-4 4.2V10.5H7.5v3H10V21h3.5z"/></svg>
+        </a>
+        <a class="social-btn" href="https://wa.me/37499600032" target="_blank" rel="noopener" aria-label="3D LAB on WhatsApp" data-i18n-attr="aria-label:whatsapp.aria">
+          <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.29.638 4.43 1.744 6.256L4 29l7.94-1.703A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3zm.02 21.6a9.55 9.55 0 0 1-4.87-1.33l-.35-.207-3.55.762.76-3.46-.23-.36A9.54 9.54 0 1 1 16.02 24.6z"/></svg>
+        </a>
+      </div>
     </div>
 
     <div class="footer__links">
-      <p class="footer__links-title">Pages</p>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#location">Location</a>
+      <p class="footer__links-title" data-i18n="footer.pagesTitle">Pages</p>
+      <a href="#home" data-i18n="nav.home">Home</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#book" data-i18n="nav.bookScan">Book a Scan</a>
+      <a href="#faq" data-i18n="faq.eyebrow">Good To Know</a>
+      <a href="#location" data-i18n="nav.location">Location</a>
     </div>
 
     <div class="footer__links">
-      <p class="footer__links-title">Services</p>
-      <a href="#services">CBCT 3D Scan</a>
-      <a href="#services">Panoramic X-Ray</a>
-      <a href="#services">Cephalometric X-Ray</a>
-      <a href="#services">Single Tooth X-Ray</a>
+      <p class="footer__links-title" data-i18n="footer.servicesTitle">Services</p>
+      <a href="#services" data-i18n="services.service1Title">CBCT 3D Scan</a>
+      <a href="#services" data-i18n="services.service2Title">Panoramic X-Ray</a>
+      <a href="#services" data-i18n="services.service3Title">Cephalometric X-Ray</a>
+      <a href="#services" data-i18n="services.service4Title">Single Tooth X-Ray</a>
     </div>
 
     <div class="footer__cta-box">
-      <p class="footer__links-title">Book a scan</p>
-      <p class="text-muted">Call or message us — we'll confirm your visit the same day.</p>
-      <a href="tel:+37499600032" class="btn btn--primary">Call Now</a>
+      <p class="footer__links-title" data-i18n="footer.bookTitle">Book a scan</p>
+      <p class="text-muted" data-i18n="footer.bookDesc">Call or message us — we'll confirm your visit the same day.</p>
+      <a href="tel:+37499600032" class="btn btn--primary" data-i18n="footer.callNow">Call Now</a>
     </div>
   </div>
   <div class="footer__bottom container">
-    <p>&copy; <span id="year"></span> 3D LAB — Yerevan, Armenia. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> 3D LAB — <span data-i18n="footer.copyright">Yerevan, Armenia. All rights reserved.</span></p>
   </div>
 </footer>
+
+<!--
+  Analytics placeholder: this business does not yet have a Google Analytics 4
+  property or Meta Pixel set up. Once they provide a Measurement ID / Pixel ID,
+  add the respective snippet here (and update the cookie/privacy notice if one
+  is added) — intentionally left out rather than shipped with a fake ID.
+-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
