@@ -92,7 +92,7 @@ section{position:relative}
 .brand__logo{width:36px;height:36px}
 .brand__text{font-size:20px;font-weight:700;letter-spacing:.02em}
 .brand__text em{color:var(--green);font-style:normal}
-.navlinks{display:flex;align-items:center;gap:34px;flex-shrink:1;min-width:0}
+.navlinks{display:flex;align-items:center;gap:34px}
 .navlinks__link{
   font-size:14.5px;font-weight:500;color:var(--text-muted);position:relative;
   padding:6px 0;transition:color .2s;white-space:nowrap;
@@ -431,7 +431,7 @@ section{position:relative}
   flex-direction:column;align-items:flex-start;gap:0;padding:20px 24px;border-top:1px solid var(--border);
 }
 .navbar.is-open .navlinks__link{width:100%;padding:16px 0;border-bottom:1px solid var(--border);white-space:normal}
-@media (max-width:800px){
+@media (max-width:1040px){
   .navlinks,.navbar__phone{display:none}
   .burger{display:flex}
   .navbar__actions{gap:10px}
