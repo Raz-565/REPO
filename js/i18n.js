@@ -13,7 +13,8 @@ const I18N = {
     'whatsapp.aria': 'Chat on WhatsApp',
 
     'hero.eyebrow': 'Diagnostic Center',
-    'hero.titleHtml': 'Precision 3D Imaging,<br>Built for Modern Dentistry',
+    'hero.titleHtml': 'Precision 3D<br>Dental Imaging',
+    'hero.scanAlt': 'Panoramic dental X-ray displayed on the 3D LAB viewer',
     'hero.desc': "3D LAB is Yerevan's dedicated 3D dental X-ray and diagnostic imaging center. High-resolution CBCT scans, panoramic and cephalometric X-rays — read fast, delivered digitally, trusted by dentists and patients alike.",
     'hero.ctaWhatsapp': 'WhatsApp Us',
     'hero.ctaMessage': 'Message on Facebook',
@@ -172,7 +173,8 @@ const I18N = {
     'whatsapp.aria': 'Գրել WhatsApp-ում',
 
     'hero.eyebrow': 'Ախտորոշիչ կենտրոն',
-    'hero.titleHtml': 'Ճշգրիտ 3D Ախտորոշում,<br>Ստեղծված Ժամանակակից Ստոմատոլոգիայի Համար',
+    'hero.titleHtml': 'Ճշգրիտ 3D<br>ատամնաբուժական ախտորոշում',
+    'hero.scanAlt': 'Պանորամային ատամնաբուժական ռենտգեն 3D LAB-ի դիտիչում',
     'hero.desc': '3D LAB-ը Երևանի մասնագիտացված 3D ատամնաբուժական ռենտգեն և ախտորոշիչ պատկերման կենտրոնն է։ Բարձր որակի CBCT սկանավորումներ, պանորամային և կեֆալոմետրիկ ռենտգեն նկարներ՝ արագ մեկնաբանությամբ, թվային եղանակով տրամադրմամբ, վստահված ստոմատոլոգների և հիվանդների կողմից։',
     'hero.ctaWhatsapp': 'Գրել WhatsApp-ում',
     'hero.ctaMessage': 'Գրել Facebook-ում',
@@ -331,7 +333,8 @@ const I18N = {
     'whatsapp.aria': 'Написать в WhatsApp',
 
     'hero.eyebrow': 'Диагностический центр',
-    'hero.titleHtml': 'Точная 3D Диагностика,<br>Созданная для Современной Стоматологии',
+    'hero.titleHtml': 'Точная 3D<br>стоматологическая диагностика',
+    'hero.scanAlt': 'Панорамный стоматологический снимок в просмотрщике 3D LAB',
     'hero.desc': '3D LAB — специализированный центр 3D стоматологической рентген- и диагностической визуализации в Ереване. Высококачественные КЛКТ-сканирования, панорамные и цефалометрические снимки — быстрая расшифровка, цифровая выдача, доверие стоматологов и пациентов.',
     'hero.ctaWhatsapp': 'Написать в WhatsApp',
     'hero.ctaMessage': 'Написать в Facebook',

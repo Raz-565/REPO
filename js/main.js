@@ -97,27 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(c => counterObserver.observe(c));
   }
 
-  /* ---- Hero cube parallax on pointer move ---- */
-  const heroScan = document.querySelector('.hero__scan');
-  const cubes = document.querySelectorAll('.hero__cube');
-
-  if (heroScan && cubes.length && window.matchMedia('(pointer: fine)').matches) {
-    heroScan.addEventListener('mousemove', (e) => {
-      const rect = heroScan.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
-
-      cubes.forEach((cube, i) => {
-        const strength = (i + 1) * 14;
-        cube.style.transform = `translate(${px * strength}px, ${py * strength}px)`;
-      });
-    });
-
-    heroScan.addEventListener('mouseleave', () => {
-      cubes.forEach(cube => { cube.style.transform = ''; });
-    });
-  }
-
   /* ---- GSAP ScrollTrigger: subtle hero parallax on scroll ---- */
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
