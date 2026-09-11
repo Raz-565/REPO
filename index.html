@@ -140,17 +140,28 @@
 
     <div class="hero__scan" data-aos="zoom-in" data-aos-delay="200">
       <div class="scan-frame">
-        <svg class="scan-jaw" viewBox="0 0 260 260" fill="none">
-          <circle cx="130" cy="130" r="118" stroke="#2c3138" stroke-width="1.5" stroke-dasharray="4 6"/>
-          <circle cx="130" cy="130" r="86" stroke="#2c3138" stroke-width="1.5" stroke-dasharray="4 6"/>
-          <path id="jawPath" d="M40 150 Q45 90 130 78 Q215 90 220 150 Q195 175 175 150 Q160 130 130 130 Q100 130 85 150 Q65 175 40 150 Z"
-                stroke="#3ecf4a" stroke-width="2.2" fill="rgba(62,207,74,0.05)"/>
-          <g stroke="#3ecf4a" stroke-width="1.6" opacity="0.85">
-            <path d="M62 148 L58 126"/><path d="M76 138 L74 114"/><path d="M92 132 L92 108"/>
-            <path d="M110 128 L112 104"/><path d="M130 126 L130 100"/><path d="M150 128 L148 104"/>
-            <path d="M168 132 L168 108"/><path d="M184 138 L186 114"/><path d="M198 148 L202 126"/>
+        <!-- Dental arch, occlusal view. viewBox is 4:3 to match the frame exactly,
+             so the artwork fills it instead of letterboxing. -->
+        <svg class="scan-jaw" viewBox="0 0 320 240" fill="none" aria-hidden="true">
+          <ellipse cx="160" cy="120" rx="139" ry="114" stroke="#2c3138" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <ellipse cx="160" cy="120" rx="78" ry="64" stroke="#2c3138" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <ellipse cx="160" cy="120" rx="115" ry="95" stroke="#3ecf4a" stroke-width="1.4" opacity=".3"/>
+          <g fill="rgba(62,207,74,.08)" stroke="#3ecf4a" stroke-width="2" stroke-linejoin="round">
+            <rect x="92" y="190" width="21" height="24" rx="7" transform="rotate(-150 102 202)"/>
+            <rect x="56" y="163" width="21" height="24" rx="7" transform="rotate(-125 66 175)"/>
+            <rect x="37" y="124" width="21" height="24" rx="7" transform="rotate(-100 47 136)"/>
+            <rect x="41" y="82" width="17" height="26" rx="6" transform="rotate(-75 49 95)"/>
+            <rect x="64" y="46" width="17" height="26" rx="6" transform="rotate(-50 72 59)"/>
+            <rect x="104" y="20" width="15" height="28" rx="5" transform="rotate(-25 111 34)"/>
+            <rect x="153" y="11" width="15" height="28" rx="5"/>
+            <rect x="202" y="20" width="15" height="28" rx="5" transform="rotate(25 209 34)"/>
+            <rect x="240" y="46" width="17" height="26" rx="6" transform="rotate(50 248 59)"/>
+            <rect x="263" y="82" width="17" height="26" rx="6" transform="rotate(75 271 95)"/>
+            <rect x="263" y="124" width="21" height="24" rx="7" transform="rotate(100 273 136)"/>
+            <rect x="244" y="163" width="21" height="24" rx="7" transform="rotate(125 254 175)"/>
+            <rect x="208" y="190" width="21" height="24" rx="7" transform="rotate(150 218 202)"/>
           </g>
-          <g class="scan-dot"><circle r="3.5" fill="#8dffa0"/></g>
+          <g class="scan-dot"><circle r="4" fill="#8dffa0"/></g>
         </svg>
         <div class="scan-sweep"></div>
         <div class="scan-frame__corner tl"></div>
@@ -581,7 +592,7 @@
           <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#3ecf4a" d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 12V8.24l-8 6-8-6V18h16z"/></svg>
           <div><strong data-i18n="location.messengerLabel">Facebook Messenger</strong><span data-i18n="location.messengerSearch">Search "3D LAB"</span></div>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=Koryun+street+5%2F3%2C+Yerevan%2C+Armenia" target="_blank" rel="noopener" class="btn btn--primary location__directions" data-i18n="location.directionsBtn">Get Directions</a>
+        <a href="https://yandex.com/maps/?rtext=~40.186777%2C44.524281&rtt=auto" target="_blank" rel="noopener" class="btn btn--primary location__directions" data-i18n="location.directionsBtn">Get Directions</a>
       </div>
 
       <div class="hours-card" data-aos="fade-up">
@@ -606,8 +617,9 @@
         title="3D LAB location map"
         id="locationMapFrame"
         data-i18n-attr="title:location.mapTitle"
-        src="https://www.google.com/maps?q=Koryun+street+5/3,+Yerevan,+Armenia&output=embed"
+        src="https://yandex.com/map-widget/v1/?ll=44.524281%2C40.186777&z=17&pt=44.524281%2C40.186777%2Cpm2rdm"
         loading="lazy"
+        allowfullscreen
         referrerpolicy="no-referrer-when-downgrade">
       </iframe>
     </div>
@@ -644,7 +656,7 @@
           <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1.1l-2.1 2.1z"/></svg>
           099 600 032
         </a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Koryun+street+5%2F3%2C+Yerevan%2C+Armenia" target="_blank" rel="noopener">
+        <a href="https://yandex.com/maps/?ll=44.524281%2C40.186777&z=17&pt=44.524281%2C40.186777%2Cpm2rdm" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
           <span data-i18n="footer.fullAddress">Koryun street 5/3, Yerevan, Armenia</span>
         </a>

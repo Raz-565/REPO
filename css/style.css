@@ -201,7 +201,7 @@ section{position:relative}
   display:flex;align-items:center;justify-content:center;overflow:hidden;
   box-shadow:0 30px 60px -20px rgba(20,40,25,.35);
 }
-.scan-jaw{width:92%;height:92%;position:relative;z-index:1}
+.scan-jaw{width:100%;height:100%;position:relative;z-index:1}
 .scan-sweep{
   position:absolute;inset:0;
   background:conic-gradient(from 0deg,rgba(62,207,74,0) 0deg,rgba(62,207,74,.35) 18deg,rgba(62,207,74,0) 40deg);
@@ -214,15 +214,18 @@ section{position:relative}
 .scan-frame__corner.bl{bottom:14px;left:14px;border-right:none;border-top:none}
 .scan-frame__corner.br{bottom:14px;right:14px;border-left:none;border-top:none}
 .scan-readout{
-  position:absolute;bottom:16px;left:16px;font-family:var(--font-head);
+  position:absolute;bottom:14px;left:14px;font-family:var(--font-head);
   font-size:11px;letter-spacing:.08em;color:var(--on-dark-accent);
-  display:flex;align-items:center;gap:7px;
+  display:flex;align-items:center;gap:7px;z-index:2;
+  /* the arch now fills the frame, so the label needs its own backdrop */
+  background:rgba(12,16,20,.8);padding:5px 11px;border-radius:999px;
+  backdrop-filter:blur(2px);
 }
 .scan-readout .dot{width:7px;height:7px;border-radius:50%;background:var(--on-dark-accent);box-shadow:0 0 8px var(--on-dark-accent);animation:blink 1.4s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 .scan-dot{
-  offset-path:path("M40 150 Q45 90 130 78 Q215 90 220 150 Q195 175 175 150 Q160 130 130 130 Q100 130 85 150 Q65 175 40 150 Z");
-  offset-rotate:0deg;animation:travel 4.5s linear infinite;
+  offset-path:path("M160 25 A115 95 0 0 1 160 215 A115 95 0 0 1 160 25");
+  offset-rotate:0deg;animation:travel 5s linear infinite;
 }
 @keyframes travel{to{offset-distance:100%}}
 
@@ -391,8 +394,14 @@ section{position:relative}
 .location__row strong{display:block;font-size:15px}
 .location__row span{font-size:13.5px;color:var(--text-muted)}
 .location__directions{margin-top:16px;width:100%}
-.location__map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3.4}
-.location__map iframe{width:100%;height:100%;border:0;filter:grayscale(.4) contrast(1.05)}
+.location__map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3}
+.location__map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.18)}
+/* The details column is tall; rather than stretching the map to match it (or
+   centring it and leaving dead space), pin the map so it follows the reader. */
+@media (min-width:981px){
+  .location__inner{align-items:start}
+  .location__map{aspect-ratio:auto;height:520px;position:sticky;top:96px}
+}
 
 .hours-card{
   background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
