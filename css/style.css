@@ -1,15 +1,25 @@
 /* ============ Tokens ============ */
 :root{
-  --bg:#101316;
-  --bg-alt:#15181c;
-  --card:#1b1f24;
-  --card-2:#20252b;
-  --border:#2a2f36;
+  --bg:#f6faf7;
+  --bg-alt:#eaf3ec;
+  --card:#ffffff;
+  --card-2:#f1f6f2;
+  --border:#dbe8de;
   --green:#3ecf4a;
-  --green-light:#8dffa0;
+  --green-light:#178035;
   --green-dim:rgba(62,207,74,.14);
-  --text:#f3f5f4;
-  --text-muted:#98a1a8;
+  --text:#16211c;
+  --text-muted:#52625a;
+  /* A couple of spots (the hero's scan mockup, the closing CTA band) keep a
+     deliberate dark "device screen" look as an accent against the light page.
+     These give them readable, on-dark colors instead of borrowing the (now
+     light-themed) tokens above. */
+  --surface-dark:#12161a;
+  --surface-dark-border:#2a2f36;
+  --on-dark-text:#f3f5f4;
+  --on-dark-text-muted:#a9b3ac;
+  --on-dark-accent:#8dffa0;
+  --on-dark-border:rgba(255,255,255,.12);
   --font-head:"Space Grotesk","Noto Sans Armenian","Noto Sans",sans-serif;
   --font-body:"Manrope","Noto Sans Armenian","Noto Sans",sans-serif;
   --container:1180px;
@@ -80,11 +90,11 @@ section{position:relative}
 .navbar{
   position:fixed;top:0;left:0;right:0;z-index:100;
   height:var(--nav-h);display:flex;align-items:center;
-  background:rgba(16,19,22,0);border-bottom:1px solid transparent;
+  background:rgba(246,250,247,0);border-bottom:1px solid transparent;
   transition:background .35s ease,border-color .35s ease,height .35s ease;
 }
 .navbar.is-scrolled{
-  background:rgba(16,19,22,.82);backdrop-filter:blur(14px) saturate(140%);
+  background:rgba(246,250,247,.86);backdrop-filter:blur(14px) saturate(140%);
   border-color:var(--border);height:70px;
 }
 .navbar .container{max-width:1360px}
@@ -135,7 +145,7 @@ section{position:relative}
   background:var(--card);border:1px solid var(--border);border-radius:12px;
   padding:6px;list-style:none;opacity:0;visibility:hidden;transform:translateY(-6px);
   transition:opacity .2s ease,transform .2s ease,visibility .2s;
-  box-shadow:0 20px 40px -12px rgba(0,0,0,.55);z-index:200;
+  box-shadow:0 20px 40px -12px rgba(20,45,30,.18);z-index:200;
 }
 .lang-switch.is-open .lang-switch__menu{opacity:1;visibility:visible;transform:translateY(0)}
 .lang-switch__menu li{
@@ -161,14 +171,14 @@ section{position:relative}
 .hero__bg{position:absolute;inset:0;z-index:0}
 .hero__grid{
   position:absolute;inset:-10%;
-  background-image:linear-gradient(rgba(62,207,74,.06) 1px,transparent 1px),
-                    linear-gradient(90deg,rgba(62,207,74,.06) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(62,207,74,.09) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(62,207,74,.09) 1px,transparent 1px);
   background-size:52px 52px;
   mask-image:radial-gradient(ellipse at 60% 30%,black 10%,transparent 70%);
 }
 .hero__glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5}
-.hero__glow--a{width:520px;height:520px;background:var(--green);top:-160px;right:-120px;opacity:.22}
-.hero__glow--b{width:420px;height:420px;background:#1c7a3d;bottom:-160px;left:-100px;opacity:.28}
+.hero__glow--a{width:520px;height:520px;background:var(--green);top:-160px;right:-120px;opacity:.24}
+.hero__glow--b{width:420px;height:420px;background:#2fa84a;bottom:-160px;left:-100px;opacity:.22}
 
 .hero__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
 .hero__title{font-size:clamp(34px,4.6vw,58px);margin:14px 0 20px;letter-spacing:-.01em}
@@ -186,10 +196,10 @@ section{position:relative}
 .hero__scan{position:relative;display:flex;align-items:center;justify-content:center}
 .scan-frame{
   position:relative;width:min(420px,90%);aspect-ratio:1/1;
-  background:radial-gradient(circle at 50% 45%,rgba(62,207,74,.08),transparent 65%),var(--card);
-  border:1px solid var(--border);border-radius:24px;
+  background:radial-gradient(circle at 50% 45%,rgba(62,207,74,.12),transparent 65%),var(--surface-dark);
+  border:1px solid var(--surface-dark-border);border-radius:24px;
   display:flex;align-items:center;justify-content:center;overflow:hidden;
-  box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
+  box-shadow:0 30px 60px -20px rgba(20,40,25,.35);
 }
 .scan-jaw{width:78%;height:78%;position:relative;z-index:1}
 .scan-sweep{
@@ -205,10 +215,10 @@ section{position:relative}
 .scan-frame__corner.br{bottom:14px;right:14px;border-left:none;border-top:none}
 .scan-readout{
   position:absolute;bottom:16px;left:16px;font-family:var(--font-head);
-  font-size:11px;letter-spacing:.08em;color:var(--green-light);
+  font-size:11px;letter-spacing:.08em;color:var(--on-dark-accent);
   display:flex;align-items:center;gap:7px;
 }
-.scan-readout .dot{width:7px;height:7px;border-radius:50%;background:var(--green-light);box-shadow:0 0 8px var(--green-light);animation:blink 1.4s ease-in-out infinite}
+.scan-readout .dot{width:7px;height:7px;border-radius:50%;background:var(--on-dark-accent);box-shadow:0 0 8px var(--on-dark-accent);animation:blink 1.4s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 .scan-dot{
   offset-path:path("M40 150 Q45 90 130 78 Q215 90 220 150 Q195 175 175 150 Q160 130 130 130 Q100 130 85 150 Q65 175 40 150 Z");
@@ -216,7 +226,7 @@ section{position:relative}
 }
 @keyframes travel{to{offset-distance:100%}}
 
-.hero__cube{position:absolute;border-radius:10px;border:1px solid var(--green);background:rgba(62,207,74,.06);backdrop-filter:blur(2px)}
+.hero__cube{position:absolute;border-radius:10px;border:1px solid var(--green);background:rgba(62,207,74,.12);backdrop-filter:blur(2px)}
 .hero__cube--1{width:64px;height:64px;top:-6%;right:2%;animation:float1 6s ease-in-out infinite;transform:rotate(20deg)}
 .hero__cube--2{width:40px;height:40px;bottom:2%;left:-4%;animation:float2 5s ease-in-out infinite;transform:rotate(-16deg)}
 @keyframes float1{0%,100%{transform:translateY(0) rotate(20deg)}50%{transform:translateY(-18px) rotate(28deg)}}
@@ -359,7 +369,7 @@ section{position:relative}
 .location__row span{font-size:13.5px;color:var(--text-muted)}
 .location__directions{margin-top:16px;width:100%}
 .location__map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3.4}
-.location__map iframe{width:100%;height:100%;border:0;filter:grayscale(.2) invert(.92) contrast(.9)}
+.location__map iframe{width:100%;height:100%;border:0;filter:grayscale(.4) contrast(1.05)}
 
 .hours-card{
   background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
@@ -377,18 +387,20 @@ section{position:relative}
 /* ============ CTA ============ */
 .cta{padding:100px 0}
 .cta__inner{
-  background:linear-gradient(135deg,#1a2f1d,#122015);border:1px solid var(--border);
+  background:linear-gradient(135deg,#1a2f1d,#122015);border:1px solid var(--on-dark-border);
   border-radius:28px;padding:70px 40px;text-align:center;position:relative;overflow:hidden;
 }
 .cta__inner::before{
   content:"";position:absolute;inset:0;
   background:radial-gradient(circle at 20% 20%,rgba(62,207,74,.25),transparent 45%);
 }
-.cta__inner h2{font-size:clamp(26px,3.4vw,38px);position:relative;margin-bottom:12px}
-.cta__inner p{color:var(--text-muted);position:relative;margin-bottom:30px}
+.cta__inner h2{font-size:clamp(26px,3.4vw,38px);position:relative;margin-bottom:12px;color:var(--on-dark-text)}
+.cta__inner p{color:var(--on-dark-text-muted);position:relative;margin-bottom:30px}
 .cta__buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative}
-.cta__review{margin-top:22px;position:relative;font-size:13.5px;color:var(--text-muted)}
-.cta__review a{color:var(--green-light);font-weight:600;margin-left:6px;transition:color .2s}
+.cta__buttons .btn--ghost{border-color:var(--on-dark-border);color:var(--on-dark-text)}
+.cta__buttons .btn--ghost:hover{border-color:var(--green);color:var(--on-dark-accent)}
+.cta__review{margin-top:22px;position:relative;font-size:13.5px;color:var(--on-dark-text-muted)}
+.cta__review a{color:var(--on-dark-accent);font-weight:600;margin-left:6px;transition:color .2s}
 .cta__review a:hover{color:var(--green)}
 
 /* ============ Footer ============ */
