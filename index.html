@@ -16,7 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-<link rel="stylesheet" href="css/style.css">
+<!-- ?v= is bumped on each deploy so browsers pick up changes without a hard refresh -->
+<link rel="stylesheet" href="css/style.css?v=2">
 
 <!--
   Structured data (schema.org) so Google can show 3D LAB as a rich local-business
@@ -176,8 +177,16 @@
     </div>
   </div>
 
-  <div class="hero__partners container" data-aos="fade-up" data-aos-delay="200">
-    <p class="hero__partners-title" data-i18n="hero.partnersTitle">Trusted for referrals by dental clinics across Yerevan</p>
+  <div class="hero__strip container" data-aos="fade-up" data-aos-delay="200">
+    <p class="hero__strip-title" data-i18n="hero.stripTitle">Every scan we offer, at one address in Yerevan</p>
+    <!-- labels reuse the service keys so the strip translates with the rest -->
+    <div class="hero__chips">
+      <a class="hero-chip" href="#services" data-i18n="services.service1Title">CBCT 3D Scan</a>
+      <a class="hero-chip" href="#services" data-i18n="services.service2Title">Panoramic X-Ray (OPG)</a>
+      <a class="hero-chip" href="#services" data-i18n="services.service3Title">Cephalometric X-Ray</a>
+      <a class="hero-chip" href="#services" data-i18n="services.service4Title">Single Tooth X-Ray</a>
+      <a class="hero-chip" href="#services" data-i18n="services.service5Title">Digital Diagnostic Report</a>
+    </div>
   </div>
 </section>
 
@@ -709,7 +718,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="js/i18n.js"></script>
-<script src="js/main.js"></script>
+<script src="js/i18n.js?v=2"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>

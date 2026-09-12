@@ -22,7 +22,7 @@ const I18N = {
     'hero.metaCity': 'Yerevan, Armenia',
     'hero.metaCallLabel': 'Call or message',
     'hero.metaFollowers': 'followers on Facebook',
-    'hero.partnersTitle': 'Trusted for referrals by dental clinics across Yerevan',
+    'hero.stripTitle': 'Every scan we offer, at one address in Yerevan',
 
     'trust.badge1': 'Modern CBCT scanning equipment',
     'trust.badge2': 'Radiation-safety compliant',
@@ -182,7 +182,7 @@ const I18N = {
     'hero.metaCity': 'Երևան, Հայաստան',
     'hero.metaCallLabel': 'Զանգահարեք կամ գրեք',
     'hero.metaFollowers': 'հետևորդ Facebook-ում',
-    'hero.partnersTitle': 'Վստահված է Երևանի ստոմատոլոգիական կլինիկաների կողմից ուղեգրումների համար',
+    'hero.stripTitle': 'Բոլոր հետազոտությունները՝ մեկ հասցեում Երևանում',
 
     'trust.badge1': 'Ժամանակակից CBCT սկանավորման սարքավորում',
     'trust.badge2': 'Ճառագայթային անվտանգության պահանջներին համապատասխան',
@@ -342,7 +342,7 @@ const I18N = {
     'hero.metaCity': 'Ереван, Армения',
     'hero.metaCallLabel': 'Позвоните или напишите',
     'hero.metaFollowers': 'подписчиков в Facebook',
-    'hero.partnersTitle': 'Клиники Еревана доверяют нам направление пациентов',
+    'hero.stripTitle': 'Все виды снимков — по одному адресу в Ереване',
 
     'trust.badge1': 'Современное оборудование для 3D КЛКТ-сканирования',
     'trust.badge2': 'Соответствует нормам радиационной безопасности',
