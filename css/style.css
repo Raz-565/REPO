@@ -28,10 +28,12 @@
 }
 
 /* The layout used to stay at 1180px no matter how wide the screen got, which
-   left ~300px of empty gutter either side on a large monitor. Let it breathe
-   in two steps instead. */
+   left ~300px of empty gutter either side on a large monitor — and 573px on a
+   32" one. Step up, then track the viewport so it keeps up with any screen
+   instead of stopping at a fixed width. The 1920px ceiling is a readability
+   limit, not a screen-size one. */
 @media (min-width:1400px){ :root{ --container:1290px } }
-@media (min-width:1660px){ :root{ --container:1400px } }
+@media (min-width:1660px){ :root{ --container:clamp(1400px,82vw,2100px) } }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
@@ -174,8 +176,11 @@ section{position:relative}
 .burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ============ Hero ============ */
+/* min(100vh,…): a full-screen hero is the intent, but on a tall monitor 100vh
+   left ~350px of void above and below the content. Past ~900px the extra
+   height is empty space, so stop there and let the next section show. */
 .hero{
-  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  min-height:min(100vh,900px);display:flex;flex-direction:column;justify-content:center;
   padding:calc(var(--nav-h) + 26px) 0 44px;position:relative;overflow:hidden;
 }
 .hero__bg{position:absolute;inset:0;z-index:0}
@@ -502,6 +507,25 @@ section{position:relative}
 
 /* ============ AOS overrides ============ */
 [data-aos]{transition-timing-function:cubic-bezier(.16,.8,.3,1) !important}
+
+/* ============ Large screens ============ */
+/* On a 27"–32" monitor the type kept its laptop size inside a much wider
+   container, which is what made the page read as a small island. Scale the
+   hero with the screen and let the radiograph fill its column. */
+@media (min-width:1660px){
+  .hero__inner{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+  /* vw-based so the type keeps growing with the screen rather than stopping at
+     one "big screen" size — the upper clamp is a readability limit */
+  .hero__title{font-size:clamp(66px,3.3vw,96px)}
+  .hero__desc{font-size:clamp(19.5px,.82vw,23px);max-width:clamp(680px,34vw,740px)}
+  .hero__meta-item strong{font-size:clamp(18px,.75vw,21px)}
+  .hero__meta-item span{font-size:clamp(14px,.6vw,16px)}
+  .scan-frame{max-width:none}      /* fill the column instead of capping at 680px */
+  .hero__strip-title{font-size:clamp(15px,.62vw,17px)}
+  .hero-chip{font-size:clamp(14.5px,.6vw,17px);padding:9px 18px}
+  .section-head h2{font-size:clamp(38px,2.4vw,52px)}
+  .section-head__desc{font-size:clamp(17px,.68vw,19px)}
+}
 
 /* ============ Responsive ============ */
 @media (max-width:980px){
