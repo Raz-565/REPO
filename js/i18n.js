@@ -10,6 +10,7 @@ const I18N = {
 
     'burger.toggle': 'Toggle menu',
     'lang.select': 'Select language',
+    'a11y.skip': 'Skip to main content',
     'whatsapp.aria': 'Chat on WhatsApp',
 
     'hero.eyebrow': 'Diagnostic Center',
@@ -170,6 +171,7 @@ const I18N = {
 
     'burger.toggle': 'Փոխարկել ցանկը',
     'lang.select': 'Ընտրել լեզուն',
+    'a11y.skip': 'Անցնել հիմնական բովանդակությանը',
     'whatsapp.aria': 'Գրել WhatsApp-ում',
 
     'hero.eyebrow': 'Ախտորոշիչ կենտրոն',
@@ -330,6 +332,7 @@ const I18N = {
 
     'burger.toggle': 'Переключить меню',
     'lang.select': 'Выбрать язык',
+    'a11y.skip': 'Перейти к основному содержанию',
     'whatsapp.aria': 'Написать в WhatsApp',
 
     'hero.eyebrow': 'Диагностический центр',
@@ -539,8 +542,11 @@ const I18N = {
     const currentLabel = document.getElementById('langCurrent');
     if (currentLabel) currentLabel.textContent = lang.toUpperCase();
 
-    document.querySelectorAll('#langMenu li').forEach(li => {
-      li.classList.toggle('is-active', li.getAttribute('data-lang') === lang);
+    document.querySelectorAll('#langMenu .lang-switch__option').forEach(btn => {
+      const active = btn.getAttribute('data-lang') === lang;
+      btn.classList.toggle('is-active', active);
+      if (active) btn.setAttribute('aria-current', 'true');
+      else btn.removeAttribute('aria-current');
     });
 
     try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
@@ -556,33 +562,70 @@ const I18N = {
 
     if (!langSwitch || !langToggle || !langMenu) return;
 
-    const closeMenu = () => {
+    const options = Array.from(langMenu.querySelectorAll('.lang-switch__option'));
+    const isOpen = () => langSwitch.classList.contains('is-open');
+    const activeOption = () => options.find(o => o.classList.contains('is-active')) || options[0];
+
+    const openMenu = (focusTarget) => {
+      langSwitch.classList.add('is-open');
+      langToggle.setAttribute('aria-expanded', 'true');
+      // synchronous is safe: the open state switches visibility with no delay,
+      // so the option is focusable the moment the class is added
+      if (focusTarget) focusTarget.focus();
+    };
+    const closeMenu = (returnFocus) => {
+      if (!isOpen()) return;
       langSwitch.classList.remove('is-open');
       langToggle.setAttribute('aria-expanded', 'false');
-    };
-    const toggleMenu = () => {
-      const open = langSwitch.classList.toggle('is-open');
-      langToggle.setAttribute('aria-expanded', String(open));
+      if (returnFocus) langToggle.focus();
     };
 
     langToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      toggleMenu();
+      // detail === 0 means Enter/Space rather than a pointer: move focus into the
+      // menu for keyboard users, leave it alone for mouse and touch
+      if (isOpen()) closeMenu(false);
+      else openMenu(e.detail === 0 ? activeOption() : null);
     });
 
-    langMenu.querySelectorAll('li[data-lang]').forEach(li => {
-      li.addEventListener('click', () => {
-        applyLanguage(li.getAttribute('data-lang'));
-        closeMenu();
+    langToggle.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      e.preventDefault();
+      openMenu(e.key === 'ArrowDown' ? activeOption() : options[options.length - 1]);
+    });
+
+    langMenu.addEventListener('keydown', (e) => {
+      const i = options.indexOf(document.activeElement);
+      if (i === -1) return;
+      let next = null;
+      if (e.key === 'ArrowDown') next = options[(i + 1) % options.length];
+      else if (e.key === 'ArrowUp') next = options[(i - 1 + options.length) % options.length];
+      else if (e.key === 'Home') next = options[0];
+      else if (e.key === 'End') next = options[options.length - 1];
+      if (next) { e.preventDefault(); next.focus(); }
+    });
+
+    options.forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyLanguage(btn.getAttribute('data-lang'));
+        closeMenu(true);
       });
     });
 
     document.addEventListener('click', (e) => {
-      if (!langSwitch.contains(e.target)) closeMenu();
+      if (!langSwitch.contains(e.target)) closeMenu(false);
+    });
+
+    // Tabbing out closes the menu. relatedTarget is null for pointer clicks on
+    // non-focusable areas — the document click handler above covers those.
+    langSwitch.addEventListener('focusout', (e) => {
+      if (e.relatedTarget && !langSwitch.contains(e.relatedTarget)) closeMenu(false);
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
+      if (e.key !== 'Escape' || !isOpen()) return;
+      e.preventDefault();   // tells the mobile-menu Escape handler this key is handled
+      closeMenu(langSwitch.contains(document.activeElement));
     });
   });
 })();

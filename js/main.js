@@ -1,7 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- AOS ---- */
-  if (window.AOS) AOS.init({ duration: 700, once: true, offset: 60 });
+  /* ---- AOS ----
+     Content starts hidden until the library reveals it, so every path where it
+     can't — script blocked, reduced motion preferred, styles not applied — must
+     reveal everything instead. */
+  const revealAll = () => document.documentElement.classList.add('no-aos');
+  const prefersReducedMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!window.AOS || prefersReducedMotion) {
+    revealAll();
+  } else {
+    AOS.init({ duration: 700, once: true, offset: 60 });
+    // Safety net: AOS marked elements as revealed, yet every one of them is still
+    // transparent long after its animation — its stylesheet never took effect.
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const revealed = Array.from(document.querySelectorAll('[data-aos].aos-animate'));
+        if (revealed.length && revealed.every(el => parseFloat(getComputedStyle(el).opacity) < 0.05)) {
+          revealAll();
+        }
+      }, 2500);
+    });
+  }
 
   /* ---- Footer year ---- */
   const yearEl = document.getElementById('year');
@@ -27,27 +48,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const navlinks = document.getElementById('navlinks');
 
   if (burger) {
-    const setNav = (open) => {
+    const firstLink = navlinks.querySelector('a');
+    const isNavOpen = () => navbar.classList.contains('is-open');
+
+    const setNav = (open, returnFocus) => {
       navbar.classList.toggle('is-open', open);
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', String(open));
       // locking the body stops the page scrolling behind the open overlay
       document.body.classList.toggle('nav-open', open);
+      // keyboard focus goes into the menu on open, and back to the button on close
+      if (open && firstLink) firstLink.focus({ preventScroll: true });
+      if (!open && returnFocus) burger.focus();
     };
 
-    burger.addEventListener('click', () => setNav(!navbar.classList.contains('is-open')));
+    burger.addEventListener('click', () => setNav(!isNavOpen()));
 
     navlinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => setNav(false));
     });
 
-    // must match the breakpoint where the burger stops being shown (1040px)
+    // Close once the burger is no longer shown. Checking its display rather than a
+    // fixed width matters: Armenian and Russian collapse at 1180px, English at 1040px.
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 1040) setNav(false);
+      if (isNavOpen() && getComputedStyle(burger).display === 'none') setNav(false);
+    });
+
+    // tabbing out of the header closes the overlay instead of leaving focus on
+    // content hidden behind it
+    navbar.addEventListener('focusout', (e) => {
+      if (isNavOpen() && e.relatedTarget && !navbar.contains(e.relatedTarget)) setNav(false);
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') setNav(false);
+      // defaultPrevented: the language menu already consumed this Escape
+      if (e.key !== 'Escape' || e.defaultPrevented || !isNavOpen()) return;
+      setNav(false, navbar.contains(document.activeElement));
     });
   }
 
@@ -59,9 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const spy = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          navAnchors.forEach(a => a.classList.remove('is-active'));
+          navAnchors.forEach(a => { a.classList.remove('is-active'); a.removeAttribute('aria-current'); });
           const active = document.querySelector(`.navlinks__link[href="#${entry.target.id}"]`);
-          if (active) active.classList.add('is-active');
+          if (active) {
+            active.classList.add('is-active');
+            active.setAttribute('aria-current', 'true');   // announce the current section, not just colour it
+          }
         }
       });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });

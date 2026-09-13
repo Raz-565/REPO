@@ -36,7 +36,9 @@
 @media (min-width:1660px){ :root{ --container:clamp(1400px,82vw,2100px) } }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+/* scroll-padding-top: in-page links would otherwise land with the section heading
+   hidden behind the fixed navbar */
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%;scroll-padding-top:calc(var(--nav-h) + 16px)}
 body{
   background:var(--bg);
   color:var(--text);
@@ -54,6 +56,21 @@ h1,h2,h3{font-family:var(--font-head);line-height:1.15;font-weight:600;overflow-
    letting it grow to --container. */
 .container{width:100%;max-width:var(--container);margin:0 auto;padding:0 24px}
 .text-muted{color:var(--text-muted)}
+
+/* ============ Keyboard & screen-reader support ============ */
+/* One consistent focus ring on every interactive element. :focus-visible shows
+   it for keyboard focus only, so mouse and touch users never see it. */
+:focus-visible{outline:3px solid var(--green-light);outline-offset:3px}
+.cta :focus-visible{outline-color:var(--on-dark-accent)}   /* the dark band needs a light ring */
+.book__field :focus-visible{outline-offset:1px}
+.skip-link{
+  position:fixed;top:12px;left:12px;z-index:1000;
+  padding:12px 18px;border-radius:10px;
+  background:var(--text);color:#fff;font-weight:700;font-size:14px;
+  transform:translateY(-160%);transition:transform .2s ease;
+}
+.skip-link:focus{transform:none}
+main:focus{outline:none}   /* the skip link lands focus here; no ring around the whole page */
 .eyebrow{
   display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;
   text-transform:uppercase;color:var(--green-light);margin-bottom:14px;
@@ -65,7 +82,7 @@ section{position:relative}
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   padding:13px 26px;border-radius:999px;font-weight:600;font-size:14.5px;
   border:1px solid transparent;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;
-  white-space:nowrap;
+  white-space:nowrap;min-height:44px;   /* comfortable tap target (Apple/Material: 44px) */
 }
 .btn--primary{
   background:linear-gradient(135deg,var(--green),#1f9102);
@@ -159,17 +176,25 @@ section{position:relative}
   transition:opacity .2s ease,transform .2s ease,visibility .2s;
   box-shadow:0 20px 40px -12px rgba(20,45,30,.18);z-index:200;
 }
-.lang-switch.is-open .lang-switch__menu{opacity:1;visibility:visible;transform:translateY(0)}
-.lang-switch__menu li{
-  display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:10px 12px;border-radius:8px;font-size:14px;font-weight:600;
+/* visibility switches instantly on open (still delayed on close) so keyboard focus
+   can move into the menu straight away */
+.lang-switch.is-open .lang-switch__menu{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .2s ease,transform .2s ease,visibility 0s}
+.lang-switch__menu li{list-style:none}
+.lang-switch__option{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;min-height:44px;
+  padding:10px 12px;border:0;border-radius:8px;background:none;
+  font:inherit;font-size:14px;font-weight:600;text-align:left;
   color:var(--text-muted);cursor:pointer;transition:background .15s,color .15s;
 }
-.lang-switch__menu li:hover{background:var(--card-2);color:var(--text)}
-.lang-switch__menu li.is-active{color:var(--green-light)}
+.lang-switch__option:hover,.lang-switch__option:focus-visible{background:var(--card-2);color:var(--text)}
+.lang-switch__option:focus-visible{outline-offset:-3px}
+.lang-switch__option.is-active{color:var(--green-light)}
 .lang-switch__code{font-size:11px;font-weight:700;letter-spacing:.05em;opacity:.7}
 
-.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;flex-shrink:0;background:none;border:none;cursor:pointer;z-index:130}
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;flex-shrink:0;background:none;border:none;cursor:pointer;z-index:130;position:relative}
+/* 44px tap area without widening the layout: the header is already at its
+   limit on a 360px phone in Russian, where a 44px-wide button overflowed */
+.burger::after{content:"";position:absolute;inset:-3px}
 .burger span{width:100%;height:2px;background:var(--text);transition:transform .3s ease,opacity .3s ease}
 .burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .burger.is-open span:nth-child(2){opacity:0}
@@ -390,8 +415,8 @@ section{position:relative}
 .book{padding:110px 0;background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .book__inner{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:start}
 .book__copy h2{font-size:clamp(26px,3.2vw,36px);margin-bottom:16px}
-.book__alt{display:flex;flex-direction:column;gap:12px;margin-top:26px}
-.book__alt-item{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;transition:color .2s}
+.book__alt{display:flex;flex-direction:column;gap:0;margin-top:26px}
+.book__alt-item{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:600;font-size:15px;transition:color .2s}
 .book__alt-item:hover{color:var(--green-light)}
 .book__form{
   background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
@@ -406,7 +431,7 @@ section{position:relative}
   transition:border-color .2s ease;resize:vertical;
 }
 .book__field input:focus,.book__field select:focus,.book__field textarea:focus{
-  outline:none;border-color:var(--green);
+  border-color:var(--green);
 }
 .book__submit{grid-column:1 / -1;width:100%}
 .book__hint{grid-column:1 / -1;font-size:12.5px;color:var(--text-muted);text-align:center}
@@ -486,7 +511,7 @@ section{position:relative}
 .footer__contact a:hover{color:var(--green-light)}
 .footer__social{display:flex;gap:10px}
 .social-btn{
-  width:38px;height:38px;border-radius:50%;border:1px solid var(--border);
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,transform .2s;
 }
 .social-btn:hover{border-color:var(--green);color:var(--green-light);transform:translateY(-2px)}
@@ -507,6 +532,10 @@ section{position:relative}
 
 /* ============ AOS overrides ============ */
 [data-aos]{transition-timing-function:cubic-bezier(.16,.8,.3,1) !important}
+/* Content starts hidden until AOS reveals it. main.js adds .no-aos whenever that
+   can't happen — script blocked, reduced motion preferred, or its styles never
+   applied — so nothing stays invisible waiting on a third-party script. */
+.no-aos [data-aos]{opacity:1 !important;transform:none !important;transition:none !important}
 
 /* ============ Large screens ============ */
 /* On a 27"–32" monitor the type kept its laptop size inside a much wider
@@ -567,7 +596,7 @@ body.nav-open{overflow:hidden}                    /* stop the page moving behind
   .burger{display:flex}
   .navbar__actions{gap:10px}
   .navbar__actions .btn--primary{padding:11px 18px;font-size:13.5px}
-  .lang-switch__toggle{padding:8px 10px;font-size:12px}
+  .lang-switch__toggle{padding:8px 10px;font-size:12px;min-height:44px}
   .lang-switch__toggle .lang-switch__current{display:none}
 }
 @media (max-width:600px){
@@ -576,6 +605,9 @@ body.nav-open{overflow:hidden}                    /* stop the page moving behind
   .hero__meta{gap:20px}
   .hero__chips{gap:8px}
   .hero-chip{padding:7px 13px;font-size:12.5px}
+  /* stacked footer links: give each a full-height tap row instead of a 22px line */
+  .footer__links,.footer__contact{gap:0}
+  .footer__links a,.footer__contact a{min-height:44px;display:flex;align-items:center}
   .cta__inner{padding:50px 22px}
   .book__form{grid-template-columns:minmax(0,1fr);padding:24px}
   .book__field--full,.book__submit,.book__hint{grid-column:1}
